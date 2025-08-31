@@ -1,0 +1,1822 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parpro - Interaction Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+<style>
+ /* Enhanced Parpro CSS - Improved Video & Image Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {  
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    cursor: none;
+}
+
+/* Custom Cursor - Fast and snappy */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background 0.3s ease;
+}
+
+.custom-cursor.hover {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    mix-blend-mode: difference;
+}
+
+/* Contact section cursor styling */
+.custom-cursor.in-contact {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.custom-cursor.in-contact.hover {
+    background: rgba(0, 0, 0, 0.8);
+    mix-blend-mode: difference;
+}
+
+/* Hide cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+    
+    .custom-cursor {
+        display: none;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 20px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff8c42;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    height: 100vh;
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.hero-meta {
+    position: absolute;
+    top: clamp(120px, 18vh, 180px);
+    right: clamp(40px, 8vw, 100px);
+}
+
+.meta-item {
+    display: flex;
+    justify-content: space-between;
+    width: clamp(280px, 25vw, 350px);
+    margin-bottom: clamp(12px, 1.5vh, 16px);
+    padding-bottom: 8px;
+    font-size: clamp(11px, 1vw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.meta-item:last-child {
+    border-bottom: none;
+}
+
+.meta-label {
+    color: #bbb;
+    font-weight: 400;
+}
+
+.meta-value {
+    color: #000;
+    font-weight: 700;
+}
+
+.hero-visual {
+    position: absolute;
+    bottom: clamp(80px, 15vh, 150px);
+    left: clamp(40px, 8vw, 100px);
+}
+
+.line-container {
+    position: relative;
+    margin-bottom: clamp(40px, 8vh, 80px);
+}
+
+.black-line {
+    width: clamp(100px, 12vw, 140px);
+    height: clamp(4px, 0.6vh, 6px);
+    background: #000;
+    position: relative;
+}
+
+.orange-dot {
+    position: absolute;
+    top: clamp(-35px, -4vh, -45px);
+    left: clamp(70px, 8vw, 90px);
+    width: clamp(60px, 8vw, 85px);
+    height: clamp(60px, 8vw, 85px);
+    background: linear-gradient(135deg, #ff8c42, #ff6b35);
+    border-radius: 50%;
+    border: clamp(4px, 0.5vw, 6px) solid #000;
+    box-shadow: 0 0 30px rgba(255, 140, 66, 0.4);
+}
+
+.dashed-line {
+    position: absolute;
+    top: 0;
+    left: clamp(140px, 16vw, 180px);
+    width: clamp(150px, 20vw, 250px);
+    height: clamp(4px, 0.6vh, 6px);
+    background: repeating-linear-gradient(
+        90deg,
+        #ddd 0px,
+        #ddd 10px,
+        transparent 10px,
+        transparent 18px
+    );
+}
+
+.character-circle {
+    width: clamp(320px, 35vw, 450px);
+    height: clamp(320px, 35vw, 450px);
+    background: #e8f4f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(60px, 8vw, 120px);
+    animation: floatCharacter 6s ease-in-out infinite;
+}
+
+.hero-title {
+    position: absolute;
+    bottom: clamp(120px, 20vh, 220px);
+    right: clamp(40px, 8vw, 100px);
+    max-width: none;
+    white-space: nowrap;
+}
+
+.title-text {
+    font-size: clamp(40px, 7vw, 120px);
+    font-weight: 900;
+    color: #000;
+    line-height: 0.85;
+    margin-bottom: clamp(12px, 2vh, 20px);
+    letter-spacing: -1px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.subtitle-text {
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: #666;
+    font-weight: 400;
+}
+
+.see-live-link {
+    display: inline-block;
+    margin-top: clamp(16px, 2vh, 24px);
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: #666;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.see-live-link:hover {
+    color: #ff8c42;
+}
+
+@keyframes floatCharacter {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-12px); 
+    }
+}
+
+/* Hero Mobile Styles */
+@media (max-width: 1024px) {
+    .hero-meta {
+        top: 140px;
+        right: 60px;
+    }
+    .hero-visual {
+        bottom: 100px;
+        left: 60px;
+    }
+    .hero-title {
+        bottom: 160px;
+        right: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        padding: clamp(20px, 5vw, 30px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: clamp(20px, 5vh, 40px);
+    }
+    
+    .hero-title {
+        position: static;
+        order: 1;
+        margin: 0;
+        text-align: left;
+        align-self: center;
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .title-text {
+        font-size: clamp(32px, 8vw, 44px);
+        line-height: 0.9;
+        margin-bottom: clamp(6px, 1.5vh, 10px);
+        text-align: left;
+    }
+    
+    .subtitle-text {
+        font-size: clamp(14px, 3.5vw, 18px);
+        margin: 0;
+        text-align: left;
+    }
+    
+    .see-live-link {
+        font-size: clamp(12px, 3vw, 16px);
+        margin-top: clamp(6px, 1.5vh, 10px);
+        display: inline-block;
+        text-align: left;
+    }
+    
+    .hero-meta {
+        position: static;
+        order: 2;
+        margin: 0;
+        width: 100%;
+        max-width: 350px;
+        align-self: center;
+    }
+    
+    .meta-item {
+        width: 100%;
+        font-size: clamp(10px, 2.5vw, 13px);
+        margin-bottom: clamp(6px, 1.5vh, 10px);
+        padding-bottom: clamp(4px, 1vh, 6px);
+        letter-spacing: clamp(0.8px, 0.2vw, 1.2px);
+        text-align: left;
+    }
+    
+    .meta-item:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+    
+    .hero-visual {
+        position: static;
+        order: 3;
+        margin: 0;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(24px, 6vh, 40px);
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .line-container {
+        margin: 0 0 20px 0;
+        transform: scale(clamp(0.6, 0.15vw + 0.5, 0.8));
+        transform-origin: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        height: 80px;
+    }
+    
+    .orange-dot {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff8c42, #ff6b35);
+        border-radius: 50%;
+        border: 4px solid #000;
+        box-shadow: 0 0 20px rgba(255, 140, 66, 0.4);
+        z-index: 3;
+    }
+    
+    .black-line {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translateY(-50%);
+        width: 80px;
+        height: 4px;
+        background: #000;
+        margin-right: 30px;
+    }
+    
+    .dashed-line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%);
+        width: 120px;
+        height: 4px;
+        background: repeating-linear-gradient(
+            90deg,
+            #ddd 0px,
+            #ddd 8px,
+            transparent 8px,
+            transparent 16px
+        );
+        margin-left: 30px;
+    }
+    
+    .character-circle {
+        width: clamp(180px, 50vw, 280px);
+        height: clamp(180px, 50vw, 280px);
+        font-size: clamp(28px, 8vw, 50px);
+        margin: 0 auto;
+    }
+}
+
+/* Hide nav on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+/* ========== ENHANCED SECTION STYLES ========== */
+.section {
+    padding: clamp(100px, 15vh, 140px) 0;
+    background: #ffffff;
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.section-left {
+    flex-shrink: 0;
+    min-width: 200px;
+}
+
+.section-title {
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.section-right {
+    flex: 1;
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
+}
+
+.section-body {
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
+}
+
+.section-description {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 480px;
+}
+/* ========== UPDATED RESEARCH CARD STYLES ========== */
+
+/* Research card - the entire clickable element */
+.research-card {
+    display: block;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Unified hover for entire card */
+.research-card:hover .image-placeholder {
+    border-color: #ff8c42;
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
+}
+
+.research-card:hover .research-link-text {
+    color: #ff8c42;
+}
+
+/* Research link text - clean orange text like "see it live" */
+.research-link-text {
+    display: block;
+    padding: clamp(16px, 2vh, 20px) clamp(20px, 2.5vw, 24px);
+    color: #666; /* Orange by default */
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.3s ease;
+    text-decoration: underline; /* No underline by default */
+    /* Removed: background and backdrop-filter */
+}
+
+/* ========== ENHANCED IMAGE STYLING ========== */
+.section-images {
+    display: grid;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
+}
+
+.image-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
+}
+
+.image-container, 
+.image-placeholder {
+    background: #f8f8f8;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    height: clamp(320px, 42vh, 450px); /* Fixed container height */
+}
+
+.competitor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.image-container:hover,
+.image-placeholder:hover {
+    border-color: #ff8c42;
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
+}
+
+.image-link-text {
+    display: block;
+    padding: clamp(16px, 2vh, 20px) clamp(20px, 2.5vw, 24px);
+    color: #ff8c42;
+    text-decoration: none;
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.image-link-text:hover {
+    color: #ff6b35;
+    background: rgba(255, 140, 66, 0.1);
+}
+
+/* ========== ENHANCED VIDEO CONTAINER STYLING ========== */
+
+.video-container {
+    width: 100%;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f8f8f8;
+    aspect-ratio: 16 / 9;
+    margin: clamp(20px, 3vh, 30px) 0;
+    border: 1px solid #ddd;
+    filter: brightness(80%);
+    transition: filter 0.3s ease, border 0.3s ease;
+}
+
+.video-container:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+.video-container video {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* Large videos - Enhanced sizing */
+.section-images .video-container {
+    aspect-ratio: 16 / 9;
+    min-height: clamp(350px, 50vh, 500px);
+}
+
+.section-images .video-container video {
+    height: 100% !important;
+}
+
+/* Interaction grid videos - Enhanced */
+.interaction-item .video-container {
+    aspect-ratio: 16 / 10;
+    min-height: clamp(220px, 30vh, 280px);
+}
+
+.interaction-item .video-container video {
+    height: 100% !important;
+}
+/* ========== ENHANCED IMAGE ROW SINGLE STYLING ========== */
+.image-row-single {
+    width: 100%;
+    height: clamp(400px, 50vh, 550px); /* Larger single images */
+    object-fit: cover;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* User Flow Section - Specific styling like Ben's */
+.user-flow-section .section-images {
+    text-align: center;
+}
+
+.user-flow-section .image-row-single {
+    width: 100%; 
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: all 0.3s ease-in-out; 
+}
+
+.user-flow-section .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+/* Wireframes Section - Specific styling like Ben's */
+.wireframes-section .section-images {
+    text-align: center;
+}
+
+.wireframes-section .image-row-single {
+    width: 100%; 
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: all 0.3s ease-in-out; 
+}
+
+.wireframes-section .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+/* Mockups Section - Specific styling like Ben's */
+.mockups-section .section-images {
+    text-align: center;
+}
+
+.mockups-section .image-row-single {
+    width: 100%; 
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: all 0.3s ease-in-out; 
+}
+
+.mockups-section .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+/* Mobile Responsiveness - Like Ben's breakpoints */
+@media (max-width: 75rem) {
+    .wireframes-section .image-row-single {
+        width: 90%;
+    }
+    
+    .user-flow-section .image-row-single {
+        width: 100%;
+    }
+    
+    .mockups-section .image-row-single {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 50rem) {
+    .wireframes-section .image-row-single,
+    .user-flow-section .image-row-single,
+    .mockups-section .image-row-single {
+        width: 100%;
+        margin: 1rem auto;
+    }
+}
+
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ========== ENHANCED MOBILE SECTION STYLES ========== */
+@media (max-width: 768px) {
+    .section {
+        padding: clamp(80px, 12vh, 100px) 0;
+    }
+
+    .section-content {
+        flex-direction: column;
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
+    }
+
+    .section-left {
+        align-self: flex-start;
+        min-width: unset;
+    }
+
+    .section-right {
+        max-width: 100%;
+        padding-top: 0;
+    }
+
+    .section-body {
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
+        line-height: 1.2;
+    }
+
+    .section-description {
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    .section-images {
+        gap: clamp(20px, 4vw, 24px);
+    }
+
+    .image-row-single {
+        height: clamp(250px, 40vh, 300px);
+    }
+
+    .image-row-double {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vw, 24px);
+    }
+
+    .image-container,
+    .image-placeholder {
+        height: clamp(200px, 35vh, 250px);
+    }
+
+    .video-container {
+        min-height: clamp(200px, 35vh, 280px);
+    }
+
+    .interaction-item .video-container {
+        min-height: clamp(180px, 28vh, 220px);
+    }
+}
+
+/* ========== TESTIMONIAL SECTION ========== */
+.testimonial-section {
+    padding: clamp(100px, 15vh, 140px) 0;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.testimonial-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.testimonial-left {
+    flex-shrink: 0;
+    width: auto;
+    min-width: 200px;
+}
+
+.testimonial-title {
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.testimonial-right {
+    flex: 1;
+    padding-top: clamp(50px, 8vh, 80px);
+    text-align: center;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-main {
+    text-align: center;
+    max-width: 100%;
+}
+
+.quote-mark {
+    font-size: clamp(100px, 12vw, 160px);
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-bottom: clamp(30px, 5vh, 40px);
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.testimonial-text {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin: 0 0 clamp(40px, 6vh, 50px) 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.testimonial-author {
+    text-align: center;
+}
+
+.author-name {
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 6px 0;
+    text-align: center;
+}
+
+.author-title {
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    color: #999;
+    margin: 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .testimonial-section {
+        padding: clamp(80px, 12vh, 100px) 0;
+    }
+
+    .testimonial-content {
+        flex-direction: column;
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
+    }
+
+    .testimonial-left {
+        align-self: flex-start;
+        min-width: unset;
+    }
+
+    .testimonial-right {
+        max-width: 100%;
+        padding-top: 0;
+        text-align: center;
+    }
+
+    .quote-mark {
+        font-size: clamp(60px, 8vw, 90px);
+        margin-bottom: clamp(20px, 3vh, 28px);
+    }
+
+    .testimonial-text {
+        font-size: clamp(24px, 6vw, 32px);
+        margin-bottom: clamp(30px, 4vh, 36px);
+    }
+
+    .testimonial-title {
+        font-size: clamp(24px, 6vw, 28px);
+    }
+}
+
+/* ========== PARALLAX SECTION ========== */
+.parallax-section {
+    position: relative;
+    padding: clamp(100px, 15vh, 140px) 0;
+    background: #000000;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.parallax-background {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: linear-gradient(45deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    background-size: 200% 200%;
+    animation: parallaxMove 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+.parallax-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.parallax-section .section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.parallax-title {
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.parallax-section .section-left {
+    flex-shrink: 0;
+    width: auto;
+    min-width: 200px;
+}
+
+.parallax-section .section-right {
+    flex: 1;
+    padding-top: clamp(50px, 8vh, 80px);
+    text-align: left;
+    min-width: 0;
+}
+
+.parallax-section .show-more-link {
+    color: #ffffff;
+}
+
+.parallax-section .show-more-link:hover {
+    color: #ff8c42;
+}
+
+@keyframes parallaxMove {
+    0%, 100% { 
+        background-position: 0% 0%;
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% { 
+        background-position: 100% 50%;
+        transform: translateY(-10px) rotate(1deg);
+    }
+    50% { 
+        background-position: 50% 100%;
+        transform: translateY(0px) rotate(0deg);
+    }
+    75% { 
+        background-position: 0% 50%;
+        transform: translateY(-5px) rotate(-1deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .parallax-section {
+        min-height: auto;
+        padding: clamp(80px, 12vh, 100px) 0;
+    }
+    
+    .parallax-section .section-content {
+        flex-direction: column;
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
+    }
+    
+    .parallax-section .section-left {
+        align-self: flex-start;
+        min-width: unset;
+    }
+    
+    .parallax-section .section-right {
+        max-width: 100%;
+        padding-top: 0;
+        text-align: left;
+    }
+    
+    .parallax-title {
+        font-size: clamp(24px, 6vw, 28px);
+    }
+}
+
+/* ========== MORE TO EXPLORE SECTION ========== */
+.show-more-container {
+    padding-top: clamp(50px, 8vh, 80px);
+    text-align: right;
+}
+
+.show-more-link {
+    font-size: clamp(16px, 1.8vw, 18px);
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.show-more-link:hover {
+    color: #ff8c42;
+}
+
+.project-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
+}
+
+.project-card {
+    border-radius: 16px;
+    overflow: hidden;
+    height: clamp(350px, 45vh, 450px);
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+}
+
+.project-image-1 {
+    background: radial-gradient(circle at 30% 50%, #667eea 0%, #764ba2 50%, #1a1a2e 100%);
+    position: relative;
+}
+
+.project-image-1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 40%, transparent 70%);
+    border-radius: 50%;
+}
+
+.project-image-2 {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image-2::after {
+    content: 'DocuMentor';
+    position: absolute;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 600;
+    color: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .show-more-container {
+        text-align: center;
+        padding-top: 0;
+    }
+    
+    .project-cards {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vw, 24px);
+    }
+    
+    .project-card {
+        height: clamp(250px, 40vh, 300px);
+    }
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+    background: #000000;
+    padding: clamp(100px, 15vh, 140px) 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.contact-header {
+    position: absolute;
+    z-index: 2;
+}
+
+.contact-linkedin {
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-linkedin:hover {
+    color: #ff8c42;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding-top: clamp(80px, 12vh, 120px);
+}
+
+.contact-main {
+    text-align: left;
+}
+
+.contact-heading {
+    font-size: clamp(42px, 7vw, 84px);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: clamp(50px, 8vh, 70px);
+    max-width: 1000px;
+}
+
+.contact-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 6vw, 60px);
+    margin-bottom: clamp(100px, 15vh, 140px);
+}
+
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.availability-dot {
+    width: 14px;
+    height: 14px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.availability-text {
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+}
+
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.phone, .email {
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.copy-btn.copied {
+    background: #4ade80;
+    border-color: #4ade80;
+    color: #000000;
+}
+
+.copyright {
+    text-align: right;
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        min-height: auto;
+        padding: clamp(80px, 12vh, 100px) 0;
+    }
+    
+    .contact-header {
+        position: static;
+        text-align: right;
+        margin-bottom: clamp(50px, 8vh, 70px);
+    }
+    
+    .contact-content {
+        padding-top: 0;
+    }
+    
+    .contact-heading {
+        font-size: clamp(32px, 8vw, 56px);
+        margin-bottom: clamp(40px, 6vh, 50px);
+    }
+    
+    .contact-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: clamp(80px, 12vh, 100px);
+    }
+    
+    .contact-footer {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+    }
+    
+    .contact-info {
+        order: 1;
+    }
+    
+    .copyright {
+        order: 2;
+        text-align: left;
+    }
+}
+
+/* ========== ENHANCED INTERACTION GRID STYLES ========== */
+.interaction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
+}
+
+.interaction-item {
+    text-align: center;
+    filter: brightness(80%);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: clamp(16px, 2vh, 20px);
+    transition: all 0.4s ease;
+}
+
+.interaction-item:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+.interaction-title {
+    font-size: clamp(16px, 1.4vw, 18px);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 clamp(16px, 2vh, 20px) 0;
+}
+
+@media (max-width: 768px) {
+    .interaction-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vw, 24px);
+    }
+}
+
+</style>
+
+    <script>
+    // custom cursor with contact section detection
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursor = document.querySelector('.custom-cursor');
+        const contactSection = document.querySelector('.contact-section');
+        
+        if (!cursor) {
+            console.error('Custom cursor element not found!');
+            return;
+        }
+        
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        // Contact section detection
+        if (contactSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        cursor.classList.add('in-contact');
+                    } else {
+                        cursor.classList.remove('in-contact');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            observer.observe(contactSection);
+        }
+        
+        // Interactive elements hover effects
+        const interactiveElements = document.querySelectorAll('a, button, .image-row-single, .image-placeholder');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+        
+        // Handle cursor visibility when mouse leaves/enters window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+    });
+
+    // copy email function
+    function copyEmail() {
+        const email = 'contactkashfi@gmail.com';
+        const copyBtn = document.querySelector('.copy-btn');
+        
+        navigator.clipboard.writeText(email).then(function() {
+            copyBtn.classList.add('copied');
+            copyBtn.textContent = '✓';
+            
+            setTimeout(function() {
+                copyBtn.classList.remove('copied');
+                copyBtn.textContent = '⧉';
+            }, 2000);
+        }).catch(function(err) {
+            console.error('Failed to copy email: ', err);
+        });
+    }
+
+    // Video auto-play on hover functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('video');
+        
+        videos.forEach(video => {
+            // Mute videos for auto-play (required by browsers)
+            video.muted = true;
+            
+            // Add hover event listeners
+            video.addEventListener('mouseenter', function() {
+                this.play().catch(e => console.log('Video play failed:', e));
+            });
+            
+            video.addEventListener('mouseleave', function() {
+                this.pause(); // Pauses at current time, doesn't reset
+            });
+            
+            // Click to unmute
+            video.addEventListener('click', function() {
+                if (this.muted) {
+                    this.muted = false;
+                }
+            });
+            
+            // Reset when video ends
+            video.addEventListener('ended', function() {
+                this.currentTime = 0;
+            });
+        });
+    });
+    </script>
+
+    </head>
+
+    <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Header -->
+    <header class="header">
+    <nav class="nav container">
+        <a href="./index.html" class="logo">K.</a>
+        <ul class="nav-links">
+            <li><a href="index2.html">Projects</a></li>
+            <li><a href="about_me.html">About</a></li>
+            <li><a href="#contact">Resume</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+    <!-- Project meta -->
+    <div class="hero-meta">
+        <div class="meta-item">
+            <span class="meta-label">ROLE:</span>
+            <span class="meta-value">INTERACTION DESIGNER</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">AUDIENCE:</span>
+            <span class="meta-value">SMB BOOKKEEPING</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">TIMELINE:</span>
+            <span class="meta-value">3 DAYS</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">PLATFORM:</span>
+            <span class="meta-value">WEBSITE</span>
+        </div>
+    </div>
+
+    <!-- Visual elements -->
+    <div class="hero-visual">
+        <div class="line-container">
+            <div class="black-line"></div>
+            <div class="orange-dot"></div>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="character-circle">
+            💼
+        </div>
+    </div>
+
+    <!-- Title -->
+    <div class="hero-title">
+        <h1 class="title-text">Parpro<br>Consulting</h1>
+        <p class="subtitle-text">Bringing bookkeeping to the digital age</p>
+        <a href="#" class="see-live-link">See It Live</a>
+    </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">overview.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">3-day hackathon redesign for bookkeeping services.</p>
+                <p class="section-description">Revamped Parpro Consulting's website to boost engagement and brand authenticity for Canadian SMBs.</p>
+            </div>
+        </div>
+
+        <!-- Single large video -->
+        <div class="section-images">
+            <div class="video-container">
+                <video controls>
+                    <source src="./media/videos/Parpro_Original.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Research Section - Unified clickable cards -->
+    <section class="section research-section">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-left">
+                    <h2 class="section-title">research.</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-body">Audited competitors for best practices.</p>
+                    <p class="section-description">Identified interaction patterns and CTAs. Client interview revealed priorities: minimize stock imagery, increase engagement, guide toward services.</p>
+                </div>
+            </div>
+
+            <!-- Two competitor images - each card is ONE clickable element -->
+            <div class="section-images">
+                <div class="image-row-double">
+                    <!-- Shasha Card - entire thing is clickable -->
+                    <a href="https://shasha-website.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="research-card">
+                        <div class="image-placeholder">
+                            <img src="./media/static_images/SHasha_Website.png"
+                                alt="Shasha website homepage showing modern design and clean layout"
+                                class="competitor-image">
+                            <span class="sr-only">Shasha Website competitor analysis</span>
+                        </div>
+                        <div class="research-link-text">
+                            Shasha Website Link
+                        </div>
+                    </a>
+
+                    <!-- HRSBS Card - entire thing is clickable -->
+                    <a href="https://hrsbs-website.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="research-card">
+                        <div class="image-placeholder">
+                            <img src="./media/static_images/HRSBS_Website.png"
+                                alt="HRSBS website interface displaying professional services layout"
+                                class="competitor-image">
+                            <span class="sr-only">HRSBS Website competitor analysis</span>
+                        </div>
+                        <div class="research-link-text">
+                            HRSBS Website Link
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- User Flow & Architecture Section -->
+    <section class="section user-flow-section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">user flow & architecture.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Primary user journeys mapped.</p>
+                <p class="section-description">Structured content to funnel users toward consultations. Reduced friction and aligned navigation with business goals.</p>
+            </div>
+        </div>
+
+        <!-- Single site map image -->
+        <div class="section-images">
+            <img src="./media/static_images/Finalized_Parpro_User_Flow.png" alt="User flow and site architecture" class="image-row-single">
+            <!-- <button class="image-row-single" tabindex="0" aria-label="User flow and site architecture">
+                <span class="sr-only">Site map and user journey flow</span>
+            </button> -->
+        </div>
+    </div>
+    </section>
+
+    <!-- Wireframes Section -->
+    <section class="section wireframes-section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">wireframes.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Element placement and structure.</p>
+                <p class="section-description">Low-fidelity wireframes established layout foundations. Enabled rapid iteration on interactions.</p>
+            </div>
+        </div>
+
+        <!-- Single wireframes image -->
+        <div class="section-images">
+            <img src="./media/static_images/Parpro_Finalized_Wireframes.png" 
+                alt="Low-fidelity wireframes showing page structure and layout foundations" 
+                class="image-row-single">
+        </div>
+    </section>
+
+    <!-- Mockups Section -->
+    <section class="section mockups-section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">mockups.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Style guide with curated imagery.</p>
+                <p class="section-description">Typography, color palette, and visual elements addressed client improvement areas.</p>
+            </div>
+        </div>
+
+        <!-- Single mockups image -->
+        <div class="section-images">
+            <img src="./media/static_images/Parpro_Finalized_Mockups.png" 
+                alt="High-fidelity mockups with style guide, typography and color palette applied" 
+                class="image-row-single">
+        </div>
+    </div>
+    </section>
+
+    <!-- Prototyping & Interaction Design Section -->
+    <section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">prototyping & interaction design.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Interactive elements across key pages.</p>
+                <p class="section-description">Designed animations for Home, About Us, Services. Focus on entrance, scrolling, and hover interactions.</p>
+            </div>
+        </div>
+
+        <!-- Four interaction videos in 2x2 grid -->
+        <div class="section-images">
+            <div class="interaction-grid">
+                <div class="interaction-item">
+                    <h4 class="interaction-title">Entrance Animation</h4>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="./media/videos/Parpro_Entrance_Animation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="interaction-item">
+                    <h4 class="interaction-title">Scrolling Animation</h4>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="./media/videos/Parpro_Scroll_Animation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="interaction-item">
+                    <h4 class="interaction-title">Mouse Click Interactions</h4>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="./media/videos/Parpro_Clicking_Interaction.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="interaction-item">
+                    <h4 class="interaction-title">Hover Interactions</h4>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="./media/videos/Parpro_Hover_Interaction.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Final Website Redesign Section -->
+    <section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">final website redesign.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Modern, engaging website delivered.</p>
+                <p class="section-description">Location-intelligent design with clear CTAs and trust-building elements.</p>
+            </div>
+        </div>
+
+        <!-- Single large final result video -->
+        <div class="section-images">
+            <div class="video-container">
+                <video controls style="width: 100%; height: clamp(300px, 40vh, 400px); border-radius: 12px; background: #f8f8f8;">
+                    <source src="./media/videos/ParPro_Consulting_Final.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+    <div class="container">
+        <div class="testimonial-content">
+            <div class="testimonial-left">
+                <h2 class="testimonial-title">reflection.</h2>
+            </div>
+            <div class="testimonial-right">
+                <div class="testimonial-main">
+                    <p class="testimonial-text">Clear process reinforced structured design thinking. Tight timelines emphasized effective team collaboration.</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">What I learned</div>
+                        <div class="author-title">If I had more time: Refine micro-interactions and conduct usability testing with users and client.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- More to Explore Section -->
+    <section class="parallax-section">
+    <div class="parallax-background"></div>
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="parallax-title">more to explore.</h2>
+            </div>
+            <div class="section-right">
+                <div class="show-more-container">
+                    <a href="#" class="show-more-link">Show More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-cards">
+            <div class="project-card">
+                <div class="project-image project-image-1"></div>
+            </div>
+            <div class="project-card">
+                <div class="project-image project-image-2"></div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Contact/Footer Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <a href="#" class="contact-linkedin">LinkedIn</a>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-main">
+                    <h2 class="contact-heading">Designing is collaborative — let's start with a chat.</h2>
+                    
+                    <div class="contact-actions">
+                        <div class="availability">
+                            <div class="availability-dot"></div>
+                            <span class="availability-text">Available For Work</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-footer">
+                    <div class="contact-info">
+                        <div class="phone">+1 (778) 881 1054</div>
+                        <div class="email-container">
+                            <div class="email">contactkashfi@gmail.com</div>
+                            <button class="copy-btn" onclick="copyEmail()">⧉</button>
+                        </div>
+                    </div>
+                    
+                    <div class="copyright">
+                        <div>All rights reserved,</div>
+                        <div>KASHFI ©2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </body>
+    </html>

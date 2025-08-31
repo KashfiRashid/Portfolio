@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kashfi | UX/UI Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {  
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    cursor: none;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Custom Cursor - Same as case study */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background 0.3s ease;
+}
+
+.custom-cursor.hover {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    mix-blend-mode: difference;
+}
+
+/* Hide cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+    
+    .custom-cursor {
+        display: none;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Header - Same as case study */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 20px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff8c42;
+}
+
+/* Hide nav on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    background: #ffffff;
+    padding: clamp(40px, 6vh, 80px) 0;
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    min-height: calc(100vh - 140px);
+    position: relative;
+}
+
+/* Profile Image - Top Right Corner */
+.profile-image {
+    position: absolute;
+    top: clamp(20px, 4vh, 40px);
+    right: 0;
+    width: clamp(200px, 20vw, 300px);
+    height: clamp(200px, 20vw, 300px);
+    border-radius: 50%;
+    background: #f8f8f8;
+    border: clamp(4px, 0.5vw, 6px) solid #1a1a1a;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+/* Main Title - Far Left, Below Image Level */
+.main-title {
+    position: absolute;
+    top: clamp(180px, 25vh, 280px);
+    left: 0;
+    font-size: clamp(60px, 12vw, 180px);
+    font-weight: 300;
+    color: #1a1a1a;
+    line-height: 0.75;
+    letter-spacing: -2px;
+    text-align: left;
+}
+
+/* Bottom Section */
+.bottom-section {
+    position: absolute;
+    bottom: clamp(60px, 10vh, 120px);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vh, 32px);
+    align-items: flex-start;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.email {
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: #1a1a1a;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.email:hover {
+    color: #ff8c42;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.copy-btn.copied {
+    background: #4ade80;
+    border-color: #4ade80;
+    color: #000000;
+}
+
+.separator-dot {
+    width: 8px;
+    height: 8px;
+    background: #1a1a1a;
+    border-radius: 50%;
+}
+
+.bottom-right {
+    flex: 1;
+    max-width: clamp(400px, 45vw, 650px);
+    display: flex;
+    align-items: flex-end;
+}
+
+.tagline {
+    font-size: clamp(28px, 4vw, 52px);
+    color: #1a1a1a;
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: justify;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero-container {
+        padding: 0 20px;
+    }
+    
+    .profile-image {
+        position: static;
+        width: clamp(150px, 40vw, 200px);
+        height: clamp(150px, 40vw, 200px);
+        margin: 0 auto clamp(40px, 6vh, 60px) auto;
+        display: block;
+    }
+    
+    .main-title {
+        position: static;
+        font-size: clamp(48px, 10vw, 70px);
+        text-align: center;
+        margin-bottom: clamp(60px, 10vh, 100px);
+    }
+    
+    .bottom-section {
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(24px, 4vh, 40px);
+        text-align: center;
+    }
+    
+    .bottom-left {
+        align-items: center;
+    }
+    
+    .bottom-right {
+        max-width: 100%;
+    }
+    
+    .tagline {
+        font-size: clamp(18px, 5vw, 28px);
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 0 16px;
+    }
+    
+    .main-title {
+        font-size: clamp(40px, 9vw, 60px);
+        margin-bottom: clamp(40px, 8vh, 60px);
+    }
+    
+    .tagline {
+        font-size: clamp(16px, 4.5vw, 22px);
+    }
+    
+    .profile-image {
+        width: clamp(130px, 35vw, 170px);
+        height: clamp(130px, 35vw, 170px);
+    }
+}
+
+@media (max-width: 360px) {
+    .main-title {
+        font-size: clamp(36px, 8vw, 50px);
+    }
+    
+    .tagline {
+        font-size: clamp(14px, 4vw, 18px);
+    }
+}
+
+/* ========== PROJECTS SECTION ========== */
+.projects-section {
+    padding: clamp(80px, 12vh, 120px) 0;
+    background: #ffffff;
+}
+
+.projects-content {
+    margin-bottom: clamp(60px, 10vh, 100px);
+}
+
+.projects-left {
+    flex-shrink: 0;
+}
+
+.projects-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.5vw, 32px);
+    align-items: start;
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block; /* ensures the whole card is clickable */
+}
+
+.project-card h3,
+.project-card p,
+.project-card span {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    border-color: rgba(255, 140, 66, 0.2);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.15);
+}
+
+.project-card.third-project {
+    grid-column: 1 / -1;
+    width: min(100%, 600px);
+    margin: 0 auto;
+}
+
+.project-image {
+    width: 100%;
+    height: clamp(300px, 40vh, 400px);
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    z-index: 2;
+}
+
+/* Project Visuals */
+.project-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #f8f9fa;
+    transition: transform 0.3s ease;
+}
+
+/* Project preview image for actual screenshots */
+.project-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 20px; /* Add some padding around the image */
+    transition: transform 0.3s ease;
+}
+
+.project-card:first-child .project-visual {
+    background: #000000 !important;
+}
+
+.project-visual:hover .project-preview-image {
+    transform: scale(1.05);
+}
+
+.gradient-purple {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-blue {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Documentor Visual Elements - Keep for first project */
+.doc-icon {
+    font-size: clamp(48px, 6vw, 72px);
+    z-index: 2;
+    position: relative;
+}
+
+.visual-elements {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+}
+
+.orange-dot-small {
+    width: clamp(32px, 4vw, 48px);
+    height: clamp(32px, 4vw, 48px);
+    background: linear-gradient(135deg, #ff8c42, #ff6b35);
+    border-radius: 50%;
+    border: 3px solid #000;
+    position: absolute;
+    top: -20px;
+    left: -40px;
+    box-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
+}
+
+.line-element {
+    width: clamp(60px, 8vw, 100px);
+    height: 3px;
+    background: #000;
+    position: absolute;
+    top: -8px;
+    left: 20px;
+}
+
+/* Remove abstract shapes - keep blank */
+.abstract-shape {
+    display: none;
+}
+
+.geometric-pattern {
+    display: none;
+}
+
+/* Project Info */
+.project-info {
+    padding: clamp(20px, 3vh, 32px);
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.project-name {
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 clamp(6px, 1vh, 8px) 0;
+    line-height: 1.2;
+}
+
+.project-description {
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: #666;
+    margin: 0 0 clamp(12px, 2vh, 16px) 0;
+    font-weight: 400;
+}
+
+.project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: clamp(4px, 0.5vh, 6px) clamp(8px, 1vw, 12px);
+    background: #f8f9fa;
+    color: #666;
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 500;
+    border-radius: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Mobile Projects Section */
+@media (max-width: 768px) {
+    .projects-section {
+        padding: clamp(60px, 10vh, 80px) 0;
+    }
+
+    .projects-content {
+        margin-bottom: clamp(40px, 6vh, 60px);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vh, 32px);
+    }
+
+    .project-card.third-project {
+        grid-column: 1;
+        width: 100%;
+        margin: 0;
+    }
+
+    .project-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+
+    .project-info {
+        padding: clamp(16px, 3vh, 24px);
+    }
+
+    .project-name {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+
+    .project-description {
+        font-size: clamp(13px, 3vw, 15px);
+    }
+
+    .tag {
+        font-size: clamp(10px, 2.5vw, 12px);
+        padding: clamp(3px, 0.5vh, 5px) clamp(6px, 1.5vw, 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: clamp(40px, 8vh, 60px) 0;
+    }
+
+    .projects-content {
+        margin-bottom: clamp(32px, 5vh, 48px);
+    }
+
+    .projects-grid {
+        gap: clamp(16px, 3vh, 24px);
+    }
+
+    .project-image {
+        height: clamp(180px, 25vh, 240px);
+    }
+
+    .project-card.featured .project-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+}
+</style>
+
+<script>
+// Custom cursor functionality - Same as case study
+document.addEventListener('DOMContentLoaded', function() {
+    const cursor = document.querySelector('.custom-cursor');
+    
+    if (!cursor) {
+        console.error('Custom cursor element not found!');
+        return;
+    }
+    
+    // Update cursor position
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    
+    // Interactive elements hover effects
+    const interactiveElements = document.querySelectorAll('a, button, .profile-image, .project-card');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    });
+    
+    // Handle cursor visibility when mouse leaves/enters window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+    
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+    });
+});
+
+// Copy email function
+function copyEmail() {
+    const email = 'contactkashfi@gmail.com';
+    const copyBtn = document.querySelector('.copy-btn');
+    
+    navigator.clipboard.writeText(email).then(function() {
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = '✓';
+        
+        setTimeout(function() {
+            copyBtn.classList.remove('copied');
+            copyBtn.textContent = '⧉';
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Failed to copy email: ', err);
+    });
+}
+</script>
+
+</head>
+
+<body>
+<!-- Custom Cursor -->
+<div class="custom-cursor"></div>
+
+<!-- Header -->
+<header class="header">
+<nav class="nav container">
+    <a href="index2.html" class="logo">K.</a>
+    <ul class="nav-links">
+        <li><a href="index2.html">Projects</a></li>
+        <li><a href="about_me.html">About</a></li>
+        <li><a href="#Resume">Resume</a></li>
+    </ul>
+</nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <!-- Profile Image - Top Right -->
+        <div class="profile-image">
+            <img src="./media/about_Images/Kashfi.png" width="100%" height="auto"</img>
+        </div>
+        
+        <!-- Main Title - Left Side -->
+        <h1 class="main-title">MD<br>KASHFI</h1>
+        
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+            <div class="bottom-left">
+                <div class="email-container">
+                    <a href="mailto:contactkashfi@gmail.com" class="email">contactkashfi@gmail.com</a>
+                    <button class="copy-btn" onclick="copyEmail()">⧉</button>
+                </div>
+            </div>
+            
+            <div class="bottom-right">
+                <p class="tagline">Hi, I'm Kashfi. From pixels to pull requests, I keep ideas moving.</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects-section">
+    <div class="container">
+        <div class="projects-content">
+            <!-- Left side - Projects title -->
+            <div class="projects-left">
+                <h2 class="projects-title">projects.</h2>
+            </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 - Documentor -->
+            <a href="./documentor.html" class="project-card">
+                <div class="project-image">
+                    <div class="project-visual">
+                        <img src="./media/static_Images/App_Stacked.png" alt="Documentor App Preview" class="project-preview-image">
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Documentor</h3>
+                    <p class="project-description">UX Case Study</p>
+                    <div class="project-tags">
+                        <span class="tag">Mobile App</span>
+                        <span class="tag">UX Research</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 2 - Parpro -->
+            <a href="./parpro_consulting.html" class="project-card">
+                <div class="project-image">
+                    <div class="project-visual">
+                        <div class="doc-icon">💼</div>
+                        <div class="visual-elements">
+                            <div class="blue-dot-small"></div>
+                            <div class="line-element"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Parpro Consulting</h3>
+                    <p class="project-description">Website Redesign</p>
+                    <div class="project-tags">
+                        <span class="tag">Website</span>
+                        <span class="tag">Interaction Design</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 3 - Centered on second row -->
+            <div class="project-card third-project">
+                <div class="project-image">
+                    <div class="project-visual gradient-blue">
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Project Three</h3>
+                    <p class="project-description">App Design</p>
+                    <div class="project-tags">
+                        <span class="tag">iOS App</span>
+                        <span class="tag">UI Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

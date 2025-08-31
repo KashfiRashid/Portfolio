@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kashfi | About</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Base (matches your files) ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff; color: #1a1a1a;
+  cursor: none; min-height: 100vh; overflow-x: hidden;
+}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+  
+/* Custom cursor */
+.custom-cursor {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(0,0,0,0.8); pointer-events: none; transform: translate(-50%, -50%);
+  transition: width .15s ease, height .15s ease, background .3s ease, opacity .2s ease;
+}
+.custom-cursor.hover { width: 80px; height: 80px; background: #ffffff; mix-blend-mode: difference; }
+@media (hover:none) and (pointer:coarse){ body{cursor:auto} .custom-cursor{display:none} }
+
+/* Header */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06); padding: 20px 0;
+}
+.nav { display:flex; justify-content:space-between; align-items:center; }
+.logo { font-size:28px; font-weight:700; color:#1a1a1a; text-decoration:none; }
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links a { color:#666; text-decoration:none; font-size:15px; font-weight:500; transition: color .3s; }
+.nav-links a:hover { color:#ff8c42; }
+@media (max-width:768px){ .nav-links { display:none; } }
+
+/* ===== About section ===== */
+.about { padding: clamp(80px, 12vh, 120px) 0; background:#ffffff; }
+
+/* Motif (circle + line + dashed) */
+.motif { position: relative; margin-bottom: clamp(30px, 6vh, 60px); }
+.motif .row { display:flex; align-items:center; gap: clamp(12px, 2vw, 18px); }
+.motif .line { width: clamp(100px, 12vw, 140px); height: 4px; background: #000; }
+.motif .dash {
+  height: 4px; width: clamp(150px, 20vw, 250px);
+  background: repeating-linear-gradient(90deg, #ddd 0px, #ddd 10px, transparent 10px, transparent 18px);
+}
+.motif .dot {
+  position:absolute; top: clamp(-35px,-4vh,-45px); left: clamp(70px,8vw,90px);
+  width: clamp(60px,8vw,85px); height: clamp(60px,8vw,85px);
+  background: linear-gradient(135deg, #ff8c42, #ff6b35);
+  border-radius: 50%; border: clamp(4px, .5vw, 6px) solid #000;
+  box-shadow: 0 0 30px rgba(255,140,66,0.35);
+}
+
+/* Split layout (left label, right big body) */
+.about-content {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap: clamp(30px, 5vw, 60px); margin-bottom: clamp(60px, 10vh, 100px);
+}
+.section-left { flex-shrink: 0; min-width: 200px; }
+.section-right { flex: 1; max-width: 55%; padding-top: clamp(40px, 6vh, 60px); }
+
+/* Hierarchy */
+.about-title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400; line-height: 1.2; color:#1a1a1a; margin: 0;
+}
+.about-body {
+  font-size: clamp(42px, 6vw, 64px);
+  font-weight: 400; line-height: 1.1; color:#1a1a1a;
+  margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+}
+.about-description {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: #666; line-height: 1.5; max-width: 520px; margin: 0;
+}
+
+/* Portrait (single) — tilted circular stamp */
+.portrait {
+  display:flex; flex-direction:column; gap:8px;
+  max-width: clamp(220px, 26vw, 320px);
+  margin-bottom: clamp(40px, 8vh, 64px);
+}
+.portrait img {
+  width: 100%; height: auto; display: block;
+  border-radius: 9999px; /* circle */
+  border: 2px solid #000; background:#fff;
+  transform: rotate(-2deg); /* subtle tilt for stamp feel */
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.portrait figcaption { font-size: 12px; color:#777; text-align:center; margin-top: 6px; }
+
+/* Gallery grid (bento-lite) — respects natural sizes */
+.about-grid {
+  display: grid; gap: clamp(20px, 2.5vw, 32px);
+  grid-template-columns: 1fr 1fr;
+  align-items: start; /* let cards be their natural heights */
+}
+.about-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+.about-card:hover {
+  border-color: #ff8c42; box-shadow: 0 8px 32px rgba(255,140,66,0.20);
+}
+.about-card img {
+  display:block; width:100%; height:auto; /* keep intrinsic aspect ratio & height */
+}
+
+/* Make first gallery item feel “hero”/anchoring on desktop */
+@media (min-width: 900px){ .about-card.first { grid-column: 1 / -1; } }
+
+/* Mobile */
+@media (max-width: 1024px){ .section-right { max-width: 100%; padding-top: 0; } }
+@media (max-width: 768px){
+  .about-content { flex-direction: column; gap: clamp(24px, 4vh, 32px); margin-bottom: clamp(48px, 8vh, 64px); }
+  .section-left { align-self: flex-start; min-width: unset; }
+  .about-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<div class="custom-cursor"></div>
+
+<header class="header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">K.</a>
+    <ul class="nav-links">
+      <li><a href="index2.html">Projects</a></li>
+      <li><a href="about_me.html">About</a></li>
+      <li><a href="./Resume.pdf">Resume</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="about" class="about">
+  <div class="container">
+
+    
+    <!-- split layout -->
+    <div class="about-content">
+      <div class="section-left">
+        <h2 class="about-title">about.</h2>
+      </div>
+      <div class="section-right">
+        <h3 class="about-body">Designing with curiosity, culture, and people at heart.</h3>
+        <p class="about-description">
+          I’m Kashfi but legends call me <b>Kash</b>.<br><br>
+          At SFU some even joke I’m the <strong>“library of people”</strong>; Name someone and there’s a good chance (about 75%) I know them through one way or other...
+          I’m a cultural, people-first designer who cares about work that feels human.<br><br>
+          Outside of design: hikes, new activities, football, and the occasional hackathon—always about shared moments.
+        </p>
+        
+        
+      </div>
+
+    <!-- single portrait (tilted circle) -->
+    <figure class="portrait">
+      <img src="./media/about_Images/Adventure.jpg" alt="Portrait of Kashfi outdoors by the lake">
+      <figcaption>Hi, I’m Kashfi.</figcaption>
+    </figure>
+    </div>
+
+    <!-- gallery (natural sizes, parpro-like hover) -->
+    <div class="about-grid" aria-label="Gallery of moments and communities">
+      <figure class="about-card first">
+        <img src="./media/about_Images/BSA_SFU.jpg" alt="Cultural community event group photo">
+      </figure>
+
+      <figure class="about-card">
+        <img src="./media/about_Images/Hiking.jpg" alt="Waterfall hike">
+      </figure>
+
+      <figure class="about-card">
+        <img src="./media/about_Images/Football.jpg" alt="Football with friends">
+      </figure>
+
+      <figure class="about-card">
+        <img src="./media/about_Images/Hackathons.jpg" alt="Hackathon demo with the team">
+      </figure>
+
+      <figure class="about-card">
+        <img src="./media/about_Images/Paint_Balljpg.jpg" alt="Paintball day with friends">
+      </figure>
+
+      <figure class="about-card">
+        <img src="./media/about_Images/Ice-Skating.jpg" alt="Night ice skating with friends">
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* Minimal cursor behavior */
+document.addEventListener('DOMContentLoaded', function(){
+  const c = document.querySelector('.custom-cursor');
+  if(!c) return;
+  document.addEventListener('mousemove', e => { c.style.left = e.clientX + 'px'; c.style.top  = e.clientY + 'px'; });
+  const hovers = document.querySelectorAll('a, button, .about-card');
+  hovers.forEach(el=>{ el.addEventListener('mouseenter', ()=>c.classList.add('hover')); el.addEventListener('mouseleave', ()=>c.classList.remove('hover')); });
+  document.addEventListener('mouseleave', ()=>{ c.style.opacity='0'; });
+  document.addEventListener('mouseenter', ()=>{ c.style.opacity='1'; });
+});
+</script>
+</body>
+</html>
