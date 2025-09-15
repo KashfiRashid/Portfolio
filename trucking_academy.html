@@ -15,6 +15,22 @@
     box-sizing: border-box;
 }
 
+/* Add specific classes to target these sections */
+.app-features-section {
+    margin-bottom: clamp(60px, 8vh, 80px);
+    margin-bottom: 40vh;
+}
+
+.final-prototype-section {
+    margin-top: clamp(60px, 10vh, 80px);
+}
+
+.final-prototype-section .image-row-single {
+    max-width: 800px;
+    height: auto;
+    margin: 1rem auto;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #ffffff;
@@ -268,7 +284,7 @@ body {
     color: #666;
     line-height: 1.5;
     margin: 0;
-    max-width: 480px;
+    /* max-width: 480px; */
 }
 
 /* Image Styles */
@@ -811,6 +827,62 @@ body {
     .copyright {
         order: 2;
         text-align: left;
+    }
+}
+
+/* Final Design Images */
+.final-design-images {
+    display: grid;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
+}
+
+.final-design-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
+}
+
+.final-design-double img {
+    width: 100%;
+    height: clamp(250px, 30vh, 350px);
+    object-fit: cover; /* Changed from cover to contain */
+    object-position: center; /* Center the image */
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    filter: brightness(80%);
+    transition: all 0.3s ease-in-out;
+    background: #f8f8f8; /* Add background for letterboxing */
+}
+
+.final-design-double img:nth-child(1) {
+    object-position: top left; /* For top-left text */
+}
+
+.final-design-double img:nth-child(2) {
+    object-position: top right; /* For top-right text */
+}
+
+.final-design-double:nth-child(2) img:nth-child(1) {
+    object-position: top left; /* Third image, top-left text */
+}
+
+.final-design-double:nth-child(2) img:nth-child(2) {
+    object-position: top right; /* Fourth image, top-right text */
+}
+
+.final-design-double img:hover {
+    filter: brightness(100%);
+    border: 1px solid #8B0000;
+}
+
+@media (max-width: 768px) {
+    .final-design-double {
+        grid-template-columns: 1fr;
+    }
+    
+    .final-design-double img {
+        height: clamp(200px, 25vh, 280px);
     }
 }
 
@@ -1462,33 +1534,33 @@ body {
     </div>
 </section>
 
-<!-- Wireframes & Mockups Section -->
-<section class="section">
+<!-- App Features Section -->
+<section class="section app-features-section">
     <div class="container">
         <div class="section-content">
             <div class="section-left">
-                <h2 class="section-title">design process.</h2>
+                <h2 class="section-title">app features.</h2>
             </div>
             <div class="section-right">
-                <p class="section-body">From wireframes to high-fidelity.</p>
+                <p class="section-body">Three core experiences delivered.</p>
                 <p class="section-description">
-                    Iterative design process based on user feedback and workshop insights. 
-                    Focus on clarity, accessibility, and engagement.
+                    <strong>- Learning courses</strong> with structured progression tracking<br>
+                    <strong>- Job board integration</strong> with direct application access<br>
+                    <strong>- Community support forum</strong> for peer networking
                 </p>
             </div>
         </div>
         
         <div class="section-images">
-            <div class="image-row-double">
-                <div class="image-container">
-                    <img src="wireframes-placeholder.png" alt="Low-fidelity wireframes">
-                </div>
-                <div class="image-container">
-                    <img src="mockups-placeholder.png" alt="High-fidelity mockups">
-                </div>
+            <div class="image-row-triple">
+                <img src="./media/trucking_academy/Learning_path_interface.png" alt="Learning path interface">
+                <img src="./media/trucking_academy/Job_Board.png" alt="Job board integration">  
+                <img src="./media/trucking_academy/Community_Support.png" alt="Community support forum">
             </div>
         </div>
     </div>
+</section>
+
 </section>
 
 <!-- Final Design Section -->
@@ -1501,16 +1573,26 @@ body {
             <div class="section-right">
                 <p class="section-body">Mobile app delivered.</p>
                 <p class="section-description">
-                    Complete learning platform with onboarding, courses, practice quizzes, 
+                    Complete learning platform with onboarding, courses, practice quizzes,
                     voice-matching for community calls, forums, and job board integration.
                 </p>
             </div>
         </div>
         
         <div class="section-images">
-            <img src="final-mockup-placeholder.png" alt="Final mobile app design screens" class="image-row-single">
+            <img src="./media/trucking_academy/C2.0.png" alt="Final mobile app design screens" class="image-row-single">
         </div>
-    </div>
+        
+        <div class="final-design-images">
+            <div class="final-design-double">
+                <img src="./media/trucking_academy/App_in_use.png" alt="Final mobile app in use">
+                <img src="./media/trucking_academy/App_in_use_2.png" alt="Final mobile app in use 2">
+            </div>
+            <div class="final-design-double">
+                <img src="./media/trucking_academy/App_in_use_3.png" alt="Final mobile app in use 3">
+                <img src="./media/trucking_academy/App_in_use_4.png" alt="Final mobile app in use 4">
+            </div>
+        </div>
 </section>
 
 <!-- Impact Section -->
