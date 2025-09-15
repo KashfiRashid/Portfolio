@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trucking Academy - UX Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    cursor: none;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background 0.3s ease;
+}
+
+.custom-cursor.hover {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    mix-blend-mode: difference;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    body { cursor: auto; }
+    .custom-cursor { display: none; }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 20px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #8B0000;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.hero-meta {
+    position: absolute;
+    top: clamp(120px, 18vh, 180px);
+    right: clamp(40px, 8vw, 100px);
+}
+
+.meta-item {
+    display: flex;
+    justify-content: space-between;
+    width: clamp(280px, 25vw, 350px);
+    margin-bottom: clamp(12px, 1.5vh, 16px);
+    padding-bottom: 8px;
+    font-size: clamp(11px, 1vw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.meta-label {
+    color: #bbb;
+    font-weight: 400;
+}
+
+.meta-value {
+    color: #000;
+    font-weight: 700;
+}
+
+.hero-visual {
+    position: absolute;
+    bottom: clamp(80px, 15vh, 150px);
+    left: clamp(40px, 8vw, 100px);
+}
+
+.line-container {
+    position: relative;
+    margin-bottom: clamp(40px, 8vh, 80px);
+}
+
+.black-line {
+    width: clamp(100px, 12vw, 140px);
+    height: clamp(4px, 0.6vh, 6px);
+    background: #000;
+    position: relative;
+}
+
+.orange-dot {
+    position: absolute;
+    top: clamp(-35px, -4vh, -45px);
+    left: clamp(70px, 8vw, 90px);
+    width: clamp(60px, 8vw, 85px);
+    height: clamp(60px, 8vw, 85px);
+    background: linear-gradient(135deg, #8B0000, #DC143C);
+    border-radius: 50%;
+    border: clamp(4px, 0.5vw, 6px) solid #000;
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.4);
+}
+
+.dashed-line {
+    position: absolute;
+    top: 0;
+    left: clamp(140px, 16vw, 180px);
+    width: clamp(150px, 20vw, 250px);
+    height: clamp(4px, 0.6vh, 6px);
+    background: repeating-linear-gradient(
+        90deg,
+        #ddd 0px,
+        #ddd 10px,
+        transparent 10px,
+        transparent 18px
+    );
+}
+
+.character-circle {
+    width: clamp(320px, 35vw, 450px);
+    height: clamp(320px, 35vw, 450px);
+    background: #f8e8e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(60px, 8vw, 120px);
+    animation: floatCharacter 6s ease-in-out infinite;
+}
+
+.hero-title {
+    position: absolute;
+    bottom: clamp(120px, 20vh, 220px);
+    right: clamp(40px, 8vw, 100px);
+    max-width: none;
+    white-space: nowrap;
+}
+
+.title-text {
+    font-size: clamp(40px, 7vw, 120px);
+    font-weight: 900;
+    color: #000;
+    line-height: 0.85;
+    margin-bottom: clamp(12px, 2vh, 20px);
+    letter-spacing: -1px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.subtitle-text {
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: #666;
+    font-weight: 400;
+}
+
+@keyframes floatCharacter {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+/* Sections */
+.section {
+    padding: clamp(100px, 15vh, 140px) 0;
+    background: #ffffff;
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.section-left {
+    flex-shrink: 0;
+    min-width: 200px;
+}
+
+.section-title {
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.section-right {
+    flex: 1;
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
+}
+
+.section-body {
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
+}
+
+.section-description {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 480px;
+}
+
+/* Image Styles */
+.section-images {
+    display: grid;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
+}
+
+.image-row-single {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    margin: 2rem auto;
+    display: block;
+    object-fit: contain;
+    filter: brightness(80%);
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #8B0000;
+}
+
+.image-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
+}
+
+.image-container {
+    background: #f8f8f8;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    height: clamp(320px, 42vh, 450px);
+}
+
+.image-container:hover {
+    border-color: #8B0000;
+    box-shadow: 0 8px 32px rgba(139, 0, 0, 0.2);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Pain Points & Solutions Grid */
+.pain-points-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 60px);
+    margin-top: clamp(40px, 6vh, 60px);
+}
+
+.pain-point-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pain-number {
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 900;
+    color: #8B0000;
+    line-height: 1;
+}
+
+.pain-text {
+    font-size: clamp(14px, 1.3vw, 16px);
+    color: #666;
+    line-height: 1.6;
+}
+
+.solution-arrow {
+    color: #8B0000;
+    font-size: 24px;
+    margin: 0 20px;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(32px, 4vw, 48px);
+    margin-top: clamp(40px, 6vh, 60px);
+}
+
+.feature-item {
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.feature-title {
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.feature-desc {
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ========== MORE TO EXPLORE SECTION ========== */
+.more-explore-section {
+    padding: clamp(80px, 12vh, 120px) 0;
+    background: #ffffff;
+}
+
+.explore-content {
+    margin-bottom: clamp(60px, 10vh, 100px);
+}
+
+.explore-left {
+    flex-shrink: 0;
+}
+
+.explore-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Explore Grid */
+.explore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.5vw, 32px);
+    align-items: start;
+}
+
+.explore-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.explore-card h3,
+.explore-card p,
+.explore-card span {
+    text-decoration: none;
+    color: inherit;
+}
+
+.explore-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.explore-card:hover::before {
+    opacity: 1;
+}
+
+.explore-card:hover {
+    border-color: rgba(255, 140, 66, 0.2);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.15);
+}
+
+.explore-image {
+    width: 100%;
+    height: clamp(300px, 40vh, 400px);
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    z-index: 2;
+}
+
+.explore-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #f8f9fa;
+}
+
+.explore-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 20px;
+}
+
+.explore-info {
+    padding: clamp(20px, 3vh, 32px);
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.explore-name {
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 clamp(6px, 1vh, 8px) 0;
+    line-height: 1.2;
+}
+
+.explore-description {
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: #666;
+    margin: 0 0 clamp(12px, 2vh, 16px) 0;
+    font-weight: 400;
+}
+
+.explore-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.tag {
+    padding: clamp(4px, 0.5vh, 6px) clamp(8px, 1vw, 12px);
+    background: #f8f9fa;
+    color: #666;
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 500;
+    border-radius: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Mobile Explore Section */
+@media (max-width: 768px) {
+    .more-explore-section {
+        padding: clamp(60px, 10vh, 80px) 0;
+    }
+
+    .explore-content {
+        margin-bottom: clamp(40px, 6vh, 60px);
+    }
+
+    .explore-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vh, 32px);
+    }
+
+    .explore-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+
+    .explore-info {
+        padding: clamp(16px, 3vh, 24px);
+    }
+
+    .explore-name {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+
+    .explore-description {
+        font-size: clamp(13px, 3vw, 15px);
+    }
+
+    .tag {
+        font-size: clamp(10px, 2.5vw, 12px);
+        padding: clamp(3px, 0.5vh, 5px) clamp(6px, 1.5vw, 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .more-explore-section {
+        padding: clamp(40px, 8vh, 60px) 0;
+    }
+
+    .explore-content {
+        margin-bottom: clamp(32px, 5vh, 48px);
+    }
+
+    .explore-grid {
+        gap: clamp(16px, 3vh, 24px);
+    }
+
+    .explore-image {
+        height: clamp(180px, 25vh, 240px);
+    }
+}
+
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+    background: #000000;
+    padding: clamp(100px, 15vh, 140px) 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.contact-header {
+    position: absolute;
+    z-index: 2;
+}
+
+.contact-linkedin {
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-linkedin:hover {
+    color: #ff8c42;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding-top: clamp(80px, 12vh, 120px);
+}
+
+.contact-main {
+    text-align: left;
+}
+
+.contact-heading {
+    font-size: clamp(42px, 7vw, 84px);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: clamp(50px, 8vh, 70px);
+    max-width: 1000px;
+}
+
+.contact-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 6vw, 60px);
+    margin-bottom: clamp(100px, 15vh, 140px);
+}
+
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.availability-dot {
+    width: 14px;
+    height: 14px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.availability-text {
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+}
+
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.phone, .email {
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.copy-btn.copied {
+    background: #4ade80;
+    border-color: #4ade80;
+    color: #000000;
+}
+
+.copyright {
+    text-align: right;
+    color: #ffffff;
+    font-size: clamp(16px, 1.6vw, 18px);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        min-height: auto;
+        padding: clamp(80px, 12vh, 100px) 0;
+    }
+    
+    .contact-header {
+        position: static;
+        text-align: right;
+        margin-bottom: clamp(50px, 8vh, 70px);
+    }
+    
+    .contact-content {
+        padding-top: 0;
+    }
+    
+    .contact-heading {
+        font-size: clamp(32px, 8vw, 56px);
+        margin-bottom: clamp(40px, 6vh, 50px);
+    }
+    
+    .contact-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: clamp(80px, 12vh, 100px);
+    }
+    
+    .contact-footer {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+    }
+    
+    .contact-info {
+        order: 1;
+    }
+    
+    .copyright {
+        order: 2;
+        text-align: left;
+    }
+}
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    
+    .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: clamp(20px, 5vw, 30px);
+    }
+    
+    .hero-title, .hero-meta, .hero-visual {
+        position: static;
+        margin: 0;
+        width: 100%;
+        max-width: 350px;
+        align-self: center;
+    }
+    
+    .section-content {
+        flex-direction: column;
+        gap: clamp(32px, 5vh, 40px);
+    }
+    
+    .section-right {
+        max-width: 100%;
+        padding-top: 0;
+    }
+    
+    .image-row-double {
+        grid-template-columns: 1fr;
+    }
+    
+    .pain-points-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(24px, 4vw, 32px);
+    }
+    
+    .contact-footer {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+    }
+}
+/* Contact section cursor styling */
+.custom-cursor.in-contact {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.custom-cursor.in-contact.hover {
+    background: rgba(0, 0, 0, 0.8);
+    mix-blend-mode: difference;
+}
+
+/* Hide cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+    
+    .custom-cursor {
+        display: none;
+    }
+}
+
+/* ========== PROJECTS SECTION ========== */
+.projects-section {
+    padding: clamp(80px, 12vh, 120px) 0;
+    background: #ffffff;
+}
+
+.projects-content {
+    margin-bottom: clamp(60px, 10vh, 100px);
+}
+
+.projects-left {
+    flex-shrink: 0;
+}
+
+.projects-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.5vw, 32px);
+    align-items: start;
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block; /* ensures the whole card is clickable */
+}
+
+.project-card h3,
+.project-card p,
+.project-card span {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    border-color: rgba(255, 140, 66, 0.2);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.15);
+}
+
+.project-card.third-project {
+    grid-column: 1 / -1;
+    width: min(100%, 600px);
+    margin: 0 auto;
+}
+
+.project-image {
+    width: 100%;
+    height: clamp(300px, 40vh, 400px);
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    z-index: 2;
+}
+
+/* Project Visuals */
+.project-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #f8f9fa;
+    transition: transform 0.3s ease;
+}
+
+/* Project preview image for actual screenshots */
+.project-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 20px; /* Add some padding around the image */
+    transition: transform 0.3s ease;
+}
+
+.project-card:first-child .project-visual {
+    background: #000000 !important;
+}
+
+.project-visual:hover .project-preview-image {
+    transform: scale(1.05);
+}
+
+.gradient-purple {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-blue {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+
+/* Remove abstract shapes - keep blank */
+.abstract-shape {
+    display: none;
+}
+
+.geometric-pattern {
+    display: none;
+}
+
+/* Project Info */
+.project-info {
+    padding: clamp(20px, 3vh, 32px);
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.project-name {
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 clamp(6px, 1vh, 8px) 0;
+    line-height: 1.2;
+}
+
+.project-description {
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: #666;
+    margin: 0 0 clamp(12px, 2vh, 16px) 0;
+    font-weight: 400;
+}
+
+.project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: clamp(4px, 0.5vh, 6px) clamp(8px, 1vw, 12px);
+    background: #f8f9fa;
+    color: #666;
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 500;
+    border-radius: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Mobile Projects Section */
+@media (max-width: 768px) {
+    .projects-section {
+        padding: clamp(60px, 10vh, 80px) 0;
+    }
+
+    .projects-content {
+        margin-bottom: clamp(40px, 6vh, 60px);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vh, 32px);
+    }
+
+    .project-card.third-project {
+        grid-column: 1;
+        width: 100%;
+        margin: 0;
+    }
+
+    .project-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+
+    .project-info {
+        padding: clamp(16px, 3vh, 24px);
+    }
+
+    .project-name {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+
+    .project-description {
+        font-size: clamp(13px, 3vw, 15px);
+    }
+
+    .tag {
+        font-size: clamp(10px, 2.5vw, 12px);
+        padding: clamp(3px, 0.5vh, 5px) clamp(6px, 1.5vw, 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: clamp(40px, 8vh, 60px) 0;
+    }
+
+    .projects-content {
+        margin-bottom: clamp(32px, 5vh, 48px);
+    }
+
+    .projects-grid {
+        gap: clamp(16px, 3vh, 24px);
+    }
+
+    .project-image {
+        height: clamp(180px, 25vh, 240px);
+    }
+
+    .project-card.featured .project-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+}
+
+
+</style>
+
+<script>
+// custom cursor with contact section detection
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursor = document.querySelector('.custom-cursor');
+        const contactSection = document.querySelector('.contact-section');
+        
+        if (!cursor) {
+            console.error('Custom cursor element not found!');
+            return;
+        }
+        
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        // Contact section detection
+        if (contactSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        cursor.classList.add('in-contact');
+                    } else {
+                        cursor.classList.remove('in-contact');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            observer.observe(contactSection);
+        }
+        
+        // Interactive elements hover effects
+        const interactiveElements = document.querySelectorAll('a, button, .image-row-single, .image-placeholder');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+        
+        // Handle cursor visibility when mouse leaves/enters window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+    });
+
+    // copy email function
+    function copyEmail() {
+        const email = 'contactkashfi@gmail.com';
+        const copyBtn = document.querySelector('.copy-btn');
+        
+        navigator.clipboard.writeText(email).then(function() {
+            copyBtn.classList.add('copied');
+            copyBtn.textContent = '✓';
+            
+            setTimeout(function() {
+                copyBtn.classList.remove('copied');
+                copyBtn.textContent = '⧉';
+            }, 2000);
+        }).catch(function(err) {
+            console.error('Failed to copy email: ', err);
+        });
+    }
+
+    // Video auto-play on hover functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('video');
+        
+        videos.forEach(video => {
+            // Mute videos for auto-play (required by browsers)
+            video.muted = true;
+            
+            // Add hover event listeners
+            video.addEventListener('mouseenter', function() {
+                this.play().catch(e => console.log('Video play failed:', e));
+            });
+            
+            video.addEventListener('mouseleave', function() {
+                this.pause(); // Pauses at current time, doesn't reset
+            });
+            
+            // Click to unmute
+            video.addEventListener('click', function() {
+                if (this.muted) {
+                    this.muted = false;
+                }
+            });
+            
+            // Reset when video ends
+            video.addEventListener('ended', function() {
+                this.currentTime = 0;
+            });
+        });
+    });
+</script>
+</head>
+
+<body>
+<!-- Custom Cursor -->
+<div class="custom-cursor"></div>
+
+<!-- Header -->
+<header class="header">
+    <nav class="nav container">
+        <a href="./index.html" class="logo">K.</a>
+        <ul class="nav-links">
+            <li><a href="./index.html">Projects</a></li>
+            <li><a href="./about_me.html">About</a></li>
+            <li><a href="#">Resume</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-meta">
+        <div class="meta-item">
+            <span class="meta-label">ROLE:</span>
+            <span class="meta-value">UX RESEARCHER & DESIGNER</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">CLIENT:</span>
+            <span class="meta-value">CULLEN WESTERN STAR</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">TIMELINE:</span>
+            <span class="meta-value">4 MONTHS</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">PLATFORM:</span>
+            <span class="meta-value">MOBILE APP</span>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="line-container">
+            <div class="black-line"></div>
+            <div class="orange-dot"></div>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="character-circle">
+            🚛
+        </div>
+    </div>
+
+    <div class="hero-title">
+        <h1 class="title-text">Trucking<br>Academy</h1>
+        <p class="subtitle-text">Addressing workforce retention through learning & community</p>
+    </div>
+</section>
+
+<!-- Challenge Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">the challenge.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Client believed they had a marketing problem.</p>
+                <p class="section-description">
+                    "We have a loyal customer base, but it isn't growing due to our outdated online presence."
+                    <br><br>
+                    <strong>Our diagnosis:</strong> Through ethnographic research, we discovered the real issue was an industry-wide worker shortage. The trucking industry was losing the competition for Gen-Z talent.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Process Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">research process.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">10 real truck drivers interviewed.</p>
+                <p class="section-description">
+                    Created 3 detailed personas (Fleet Manager, Solo Operator, Junior Driver). 
+                    Mapped user journeys identifying key pain points. 
+                    Hosted participatory workshop with 8 participants (0-20 years experience).
+                </p>
+            </div>
+        </div>
+        
+        <!-- Personas Image -->
+        <div class="section-images">
+            <img src="persona-image-placeholder.png" alt="Three user personas developed during research" class="image-row-single">
+        </div>
+    </div>
+</section>
+
+<!-- Key Insights Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">key insights.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Pain points → Solutions.</p>
+            </div>
+        </div>
+        
+        <div class="pain-points-grid">
+            <div class="pain-point-item">
+                <div class="pain-number">01</div>
+                <div class="pain-text">
+                    <strong>Convoluted learning paths</strong><br>
+                    Complex certification system creates confusion about skill progression
+                </div>
+            </div>
+            <div class="pain-point-item">
+                <div class="pain-number">→</div>
+                <div class="pain-text">
+                    <strong>Linear progression system</strong><br>
+                    Clear, color-coded courses with visual progress tracking
+                </div>
+            </div>
+            
+            <div class="pain-point-item">
+                <div class="pain-number">02</div>
+                <div class="pain-text">
+                    <strong>Dense, inaccessible resources</strong><br>
+                    Overwhelming textbooks lacking practical context
+                </div>
+            </div>
+            <div class="pain-point-item">
+                <div class="pain-number">→</div>
+                <div class="pain-text">
+                    <strong>Bite-sized content</strong><br>
+                    Quick quizzes and instant feedback for busy professionals
+                </div>
+            </div>
+            
+            <div class="pain-point-item">
+                <div class="pain-number">03</div>
+                <div class="pain-text">
+                    <strong>High training costs</strong><br>
+                    Uncertainty about career prospects creates barrier to entry
+                </div>
+            </div>
+            <div class="pain-point-item">
+                <div class="pain-number">→</div>
+                <div class="pain-text">
+                    <strong>Community support</strong><br>
+                    Connect with experienced drivers nationwide for guidance
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">the solution.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Comprehensive learning platform.</p>
+                <p class="section-description">
+                    Trucking Academy - A mobile app that streamlines the path to a lucrative trucking career 
+                    through guided learning, community mentorship, and direct employment connections.
+                </p>
+            </div>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Guided Learning Path</div>
+                <div class="feature-desc">Linear, color-coded courses with visual progress tracking</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Bite-sized Content</div>
+                <div class="feature-desc">Quick quizzes and instant feedback designed for busy schedules</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Community Forum</div>
+                <div class="feature-desc">Connect with experienced drivers nationwide for mentorship</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- User Journey Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">user journey.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Ben's path to success.</p>
+                <p class="section-description">
+                    Following Ben, a 28-year-old delivery driver seeking upward mobility, 
+                    through his journey from frustration to achieving his Class 3 license.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section-images">
+            <img src="user-journey-placeholder.png" alt="Ben's user journey map" class="image-row-single">
+        </div>
+    </div>
+</section>
+
+<!-- Wireframes & Mockups Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">design process.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">From wireframes to high-fidelity.</p>
+                <p class="section-description">
+                    Iterative design process based on user feedback and workshop insights. 
+                    Focus on clarity, accessibility, and engagement.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section-images">
+            <div class="image-row-double">
+                <div class="image-container">
+                    <img src="wireframes-placeholder.png" alt="Low-fidelity wireframes">
+                </div>
+                <div class="image-container">
+                    <img src="mockups-placeholder.png" alt="High-fidelity mockups">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final Design Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">final design.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Mobile app delivered.</p>
+                <p class="section-description">
+                    Complete learning platform with onboarding, courses, practice quizzes, 
+                    voice-matching for community calls, forums, and job board integration.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section-images">
+            <img src="final-mockup-placeholder.png" alt="Final mobile app design screens" class="image-row-single">
+        </div>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-content">
+            <div class="section-left">
+                <h2 class="section-title">impact.</h2>
+            </div>
+            <div class="section-right">
+                <p class="section-body">Addressing the root cause.</p>
+                <p class="section-description">
+                    By conducting workshops with real truck drivers and iterating based on their feedback, 
+                    we created a solution that addresses the diagnosed problem rather than surface symptoms.
+                    <br><br>
+                    <strong>Expected outcomes:</strong> Lower barriers to industry entry, accelerated skill development, 
+                    sustainable community engagement, and direct employer-candidate connections.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- More to Explore Section -->
+<section class="more-explore-section">
+    <div class="container">
+        <div class="explore-content">
+            <div class="explore-left">
+                <h2 class="explore-title">more to explore.</h2>
+            </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 - Documentor -->
+            <a href="./documentor.html" class="project-card">
+                <div class="project-image">
+                    <div class="project-visual">
+                        <img src="./media/static_Images/App_Stacked.png" alt="Documentor App Preview" class="project-preview-image">
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Documentor</h3>
+                    <p class="project-description">UX Case Study</p>
+                    <div class="project-tags">
+                        <span class="tag">Mobile App</span>
+                        <span class="tag">UX Research</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 2 - Parpro -->
+            <a href="./parpro_consulting.html" class="project-card">
+                <div class="project-image">
+                    <div class="project-visual">
+                        <div class="doc-icon">💼</div>
+                        <div class="visual-elements">
+                            <div class="blue-dot-small"></div>
+                            <div class="line-element"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Parpro Consulting</h3>
+                    <p class="project-description">Website Redesign</p>
+                    <div class="project-tags">
+                        <span class="tag">Website</span>
+                        <span class="tag">Interaction Design</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Contact/Footer Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <a href="https://www.linkedin.com/in/kashfi-rashid/" class="contact-linkedin">LinkedIn</a>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-main">
+                    <h2 class="contact-heading">Designing is collaborative — let's start with a chat.</h2>
+                    
+                    <div class="contact-actions">
+                        <div class="availability">
+                            <div class="availability-dot"></div>
+                            <span class="availability-text">Available For Work</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-footer">
+                    <div class="contact-info">
+                        <div class="phone">+1 (778) 881 1054</div>
+                        <div class="email-container">
+                            <div class="email">contactkashfi@gmail.com</div>
+                            <button class="copy-btn" onclick="copyEmail()">⧉</button>
+                        </div>
+                    </div>
+                    
+                    <div class="copyright">
+                        <div>All rights reserved,</div>
+                        <div>KASHFI ©2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

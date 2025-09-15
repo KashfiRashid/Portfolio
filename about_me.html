@@ -19,15 +19,54 @@ body {
 }
 .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
   
-/* Custom cursor */
+/* Custom Cursor - Fast and snappy */
 .custom-cursor {
-  position: fixed; top: 0; left: 0; z-index: 9999;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: rgba(0,0,0,0.8); pointer-events: none; transform: translate(-50%, -50%);
-  transition: width .15s ease, height .15s ease, background .3s ease, opacity .2s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background 0.3s ease;
 }
-.custom-cursor.hover { width: 80px; height: 80px; background: #ffffff; mix-blend-mode: difference; }
-@media (hover:none) and (pointer:coarse){ body{cursor:auto} .custom-cursor{display:none} }
+
+.custom-cursor.hover {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    mix-blend-mode: difference;
+}
+
+/* Contact section cursor styling */
+.custom-cursor.in-contact {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.custom-cursor.in-contact.hover {
+    background: rgba(0, 0, 0, 0.8);
+    mix-blend-mode: difference;
+}
+
+/* Hide cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+    
+    .custom-cursor {
+        display: none;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
 
 /* Header */
 .header {
@@ -127,6 +166,212 @@ body {
   .section-left { align-self: flex-start; min-width: unset; }
   .about-grid { grid-template-columns: 1fr; }
 }
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+    background: #000000;
+    padding: clamp(80px, 12vh, 120px) 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.contact-header {
+    position: absolute;
+    /* right: clamp(40px, 6vw, 60px); */
+    z-index: 2;
+}
+
+.contact-linkedin {
+    color: #ffffff;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-linkedin:hover {
+    color: #ff8c42;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding-top: clamp(60px, 10vh, 100px);
+}
+
+.contact-main {
+    text-align: left;
+}
+
+.contact-heading {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: clamp(40px, 6vh, 60px);
+    max-width: 900px;
+}
+
+.contact-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(30px, 4vw, 50px);
+    margin-bottom: clamp(80px, 12vh, 120px);
+}
+
+/* .get-in-touch-btn {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: clamp(12px, 1.5vh, 16px) clamp(24px, 3vw, 32px);
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.get-in-touch-btn:hover {
+    background: #ff8c42;
+    color: #ffffff;
+} */
+
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.availability-dot {
+    width: 12px;
+    height: 12px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.availability-text {
+    color: #ffffff;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+}
+
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.phone, .email {
+    color: #ffffff;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.copy-btn.copied {
+    background: #4ade80;
+    border-color: #4ade80;
+    color: #000000;
+}
+
+.copyright {
+    text-align: right;
+    color: #ffffff;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        min-height: auto;
+        padding: clamp(60px, 10vh, 80px) 0;
+    }
+    
+    .contact-header {
+        position: static;
+        text-align: right;
+        margin-bottom: clamp(40px, 6vh, 60px);
+    }
+    
+    .contact-content {
+        padding-top: 0;
+    }
+    
+    .contact-heading {
+        font-size: clamp(28px, 7vw, 48px);
+        margin-bottom: clamp(30px, 5vh, 40px);
+    }
+    
+    .contact-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: clamp(60px, 10vh, 80px);
+    }
+    
+    .contact-footer {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+    }
+    
+    .contact-info {
+        order: 1;
+    }
+    
+    .copyright {
+        order: 2;
+        text-align: left;
+    }
+}
+
 </style>
 </head>
 
@@ -135,10 +380,10 @@ body {
 
 <header class="header">
   <nav class="nav container">
-    <a href="index.html" class="logo">K.</a>
+    <a href="./index.html" class="logo">K.</a>
     <ul class="nav-links">
-      <li><a href="index2.html">Projects</a></li>
-      <li><a href="about_me.html">About</a></li>
+      <li><a href="./index.html">Projects</a></li>
+      <li><a href="./about_me.html">About</a></li>
       <li><a href="./Resume.pdf">Resume</a></li>
     </ul>
   </nav>
@@ -213,6 +458,120 @@ document.addEventListener('DOMContentLoaded', function(){
   document.addEventListener('mouseleave', ()=>{ c.style.opacity='0'; });
   document.addEventListener('mouseenter', ()=>{ c.style.opacity='1'; });
 });
+// custom cursor with contact section detection
+document.addEventListener('DOMContentLoaded', function() {
+    const cursor = document.querySelector('.custom-cursor');
+    const contactSection = document.querySelector('.contact-section');
+    
+    if (!cursor) {
+        console.error('Custom cursor element not found!');
+        return;
+    }
+    
+    // Update cursor position
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    
+    // Contact section detection
+    if (contactSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // User is in contact section - change cursor to white
+                    cursor.classList.add('in-contact');
+                } else {
+                    // User left contact section - change back to dark
+                    cursor.classList.remove('in-contact');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of contact section is visible
+        });
+        
+        observer.observe(contactSection);
+    }
+    
+    // Interactive elements hover effects
+    const interactiveElements = document.querySelectorAll('a, button, .image-row-single, .image-placeholder');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    });
+    
+    // Handle cursor visibility when mouse leaves/enters window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+    
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+    });
+});
+
+// copy email function
+function copyEmail() {
+    const email = 'contactkashfi@gmail.com';
+    const copyBtn = document.querySelector('.copy-btn');
+    
+    navigator.clipboard.writeText(email).then(function() {
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = '✓';
+        
+        setTimeout(function() {
+            copyBtn.classList.remove('copied');
+            copyBtn.textContent = '⧉';
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Failed to copy email: ', err);
+    });
+}
 </script>
+
+<!-- Contact/Footer Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-header">
+            <a href="https://www.linkedin.com/in/kashfi-rashid/" class="contact-linkedin">LinkedIn</a>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-main">
+                <h2 class="contact-heading">Designing is collaborative — let's start with a chat.</h2>
+                
+                <div class="contact-actions">
+                    <!-- <button class="get-in-touch-btn">Get In Touch</button>  -->
+                    <div class="availability">
+                        <div class="availability-dot"></div>
+                        <span class="availability-text">Available For Work</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-footer">
+                <div class="contact-info">
+                    <div class="phone">+1 (778) 881 1054</div>
+                    <div class="email-container">
+                        <div class="email">contactkashfi@gmail.com</div>
+                        <button class="copy-btn" onclick="copyEmail()">⧉</button>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <div>All rights reserved,</div>
+                    <div>KASHFI ©2025</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
 </body>
 </html>
