@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {  
     font-family: 'Poppins', sans-serif;
     background: #ffffff;
@@ -1752,6 +1756,13 @@ body {
     z-index: 2;
 }
 
+.explore-card:first-child .explore-visual {
+    background: #000000 !important;
+}
+.explore-card:nth-child(2) .explore-visual {
+    background: #000000 !important;
+}
+
 .explore-visual {
     width: 100%;
     height: 100%;
@@ -2053,6 +2064,252 @@ body {
         text-align: left;
     }
 }
+
+/* ========== PROJECTS SECTION ========== */
+.projects-section {
+    padding: clamp(80px, 12vh, 120px) 0;
+    background: #ffffff;
+}
+
+.projects-content {
+    margin-bottom: clamp(60px, 10vh, 100px);
+}
+
+.projects-left {
+    flex-shrink: 0;
+}
+
+.projects-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.5vw, 32px);
+    align-items: start;
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block; /* ensures the whole card is clickable */
+}
+
+.project-card h3,
+.project-card p,
+.project-card span {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    border-color: rgba(255, 140, 66, 0.2);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.15);
+}
+
+.project-card.third-project {
+    grid-column: 1 / -1;
+    width: min(100%, 600px);
+    margin: 0 auto;
+}
+
+.project-image {
+    width: 100%;
+    height: clamp(300px, 40vh, 400px);
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    z-index: 2;
+}
+
+/* Project Visuals */
+.project-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #f8f9fa;
+    transition: transform 0.3s ease;
+}
+
+/* Project preview image for actual screenshots */
+.project-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 20px; /* Add some padding around the image */
+    transition: transform 0.3s ease;
+}
+
+.project-card:first-child .project-visual {
+    background: #000000 !important;
+}
+.project-card:nth-child(2) .project-visual {
+    background: #000000 !important;
+}
+
+
+.project-visual:hover .project-preview-image {
+    transform: scale(1.05);
+}
+
+.gradient-purple {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-blue {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+
+/* Remove abstract shapes - keep blank */
+.abstract-shape {
+    display: none;
+}
+
+.geometric-pattern {
+    display: none;
+}
+
+/* Project Info */
+.project-info {
+    padding: clamp(20px, 3vh, 32px);
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.project-name {
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 clamp(6px, 1vh, 8px) 0;
+    line-height: 1.2;
+}
+
+.project-description {
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: #666;
+    margin: 0 0 clamp(12px, 2vh, 16px) 0;
+    font-weight: 400;
+}
+
+.project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: clamp(4px, 0.5vh, 6px) clamp(8px, 1vw, 12px);
+    background: #f8f9fa;
+    color: #666;
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 500;
+    border-radius: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Mobile Projects Section */
+@media (max-width: 768px) {
+    .projects-section {
+        padding: clamp(60px, 10vh, 80px) 0;
+    }
+
+    .projects-content {
+        margin-bottom: clamp(40px, 6vh, 60px);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vh, 32px);
+    }
+
+    .project-card.third-project {
+        grid-column: 1;
+        width: 100%;
+        margin: 0;
+    }
+
+    .project-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+
+    .project-info {
+        padding: clamp(16px, 3vh, 24px);
+    }
+
+    .project-name {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+
+    .project-description {
+        font-size: clamp(13px, 3vw, 15px);
+    }
+
+    .tag {
+        font-size: clamp(10px, 2.5vw, 12px);
+        padding: clamp(3px, 0.5vh, 5px) clamp(6px, 1.5vw, 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: clamp(40px, 8vh, 60px) 0;
+    }
+
+    .projects-content {
+        margin-bottom: clamp(32px, 5vh, 48px);
+    }
+
+    .projects-grid {
+        gap: clamp(16px, 3vh, 24px);
+    }
+
+    .project-image {
+        height: clamp(180px, 25vh, 240px);
+    }
+
+    .project-card.featured .project-image {
+        height: clamp(200px, 30vh, 280px);
+    }
+}
+
 </style>
 
 <script>
@@ -2174,9 +2431,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <nav class="nav container">
         <a href="./index.html" class="logo">K.</a>
         <ul class="nav-links">
-            <li><a href="./index.html">Projects</a></li>
+            <li><a href="./index.html#projects">Projects</a></li>
             <li><a href="./about_me.html">About</a></li>
-            <li><a href="#Resume">Resume</a></li>
+            <li><a href="https://drive.google.com/file/d/10PqNTE4Bmdkes-A8w3u6hcsW1UC-pS6h/view?usp=sharing" target="_blank">Resume</a></li>
         </ul>
     </nav>
 </header>
@@ -2219,7 +2476,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hero-title">
     <h1 class="title-text">Documentor</h1>
     <p class="subtitle-text">A helpful guide to Vancouver</p>
-    <a href="#" class="see-live-link">See It Live</a>
+    <a href="https://www.figma.com/proto/mUhrFesf5iW9kV4fvQCjx3/P4-DocuMentor?page-id=1%3A428&node-id=393-9613&viewport=1242%2C-665%2C0.24&t=jWUbub7o20cZ5ydT-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=393%3A9613&show-proto-sidebar=1" class="see-live-link" target="_blank" rel="noopener noreferrer">See It Live</a>
 </div>
 </section>
 
@@ -2449,48 +2706,43 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
 
+        <!-- Use explore-grid (not projects-grid) to match your CSS -->
         <div class="explore-grid">
+
             <!-- Project 1 - Parpro -->
-            <a href="./parpro_consulting.html" class="explore-card">
-                <div class="explore-image">
-                    <div class="explore-visual">
-                        <div class="doc-icon">💼</div>
-                        <div class="visual-elements">
-                            <div class="blue-dot-small"></div>
-                            <div class="line-element"></div>
-                        </div>
+            <a href="./parpro_consulting.html" class="project-card">
+                <div class="project-image">
+                    <div class="project-visual">
+                        <img src="./media/static_Images/Parpro_home.png" alt="Parpro Consulting Website Preview" class="project-preview-image">
                     </div>
                 </div>
-                <div class="explore-info">
-                    <h3 class="explore-name">Parpro Consulting</h3>
-                    <p class="explore-description">Website Redesign</p>
-                    <div class="explore-tags">
+                <div class="project-info">
+                    <h3 class="project-name">Parpro Consulting</h3>
+                    <p class="project-description">Website Redesign</p>
+                    <div class="project-tags">
                         <span class="tag">Website</span>
                         <span class="tag">Interaction Design</span>
                     </div>
                 </div>
             </a>
 
-            <!-- Project 2 - Trucking Academy -->
-            <a href="./trucking_academy.html" class="explore-card">
-                <div class="explore-image">
-                    <div class="explore-visual">
-                        <div class="doc-icon">🚛</div>
-                        <div class="visual-elements">
-                            <div class="blue-dot-small"></div>
-                            <div class="line-element"></div>
-                        </div>
+            <!-- Project 1 - Parpro -->
+            <a href="./trucking_academy.html" class="project-card">
+                <div class="project-image">
+                    <div class="project-visual">
+                        <img src="./media/trucking_academy/Final_App_Mockp.png" alt="Parpro Consulting Website Preview" class="project-preview-image">
                     </div>
                 </div>
-                <div class="explore-info">
-                    <h3 class="explore-name">Trucking Academy</h3>
-                    <p class="explore-description">Ux Case Study</p>
-                    <div class="explore-tags">
+                <div class="project-info">
+                    <h3 class="project-name">Trucking Academy</h3>
+                    <p class="project-description">Ux Case Study</p>
+                    <div class="project-tags">
                         <span class="tag">Mobile App</span>
                         <span class="tag">UX Designer</span>
                     </div>
                 </div>
             </a>
+            
         </div>
     </div>
 </section>

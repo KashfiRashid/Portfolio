@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Add specific classes to target these sections */
 .app-features-section {
     margin-bottom: clamp(60px, 8vh, 80px);
@@ -1071,6 +1075,9 @@ body {
 .project-card:first-child .project-visual {
     background: #000000 !important;
 }
+.project-card:nth-child(2) .project-visual {
+    background: #000000 !important;
+}
 
 .project-visual:hover .project-preview-image {
     transform: scale(1.05);
@@ -1319,9 +1326,9 @@ body {
     <nav class="nav container">
         <a href="./index.html" class="logo">K.</a>
         <ul class="nav-links">
-            <li><a href="./index.html">Projects</a></li>
+            <li><a href="./index.html#projects">Projects</a></li>
             <li><a href="./about_me.html">About</a></li>
-            <li><a href="#">Resume</a></li>
+            <li><a href="https://drive.google.com/file/d/10PqNTE4Bmdkes-A8w3u6hcsW1UC-pS6h/view?usp=sharing" target="_blank">Resume</a></li>
         </ul>
     </nav>
 </header>
@@ -1648,11 +1655,7 @@ body {
             <a href="./parpro_consulting.html" class="project-card">
                 <div class="project-image">
                     <div class="project-visual">
-                        <div class="doc-icon">💼</div>
-                        <div class="visual-elements">
-                            <div class="blue-dot-small"></div>
-                            <div class="line-element"></div>
-                        </div>
+                        <img src="./media/static_Images/Parpro_home.png" alt="Parpro Consulting Website Preview" class="project-preview-image">
                     </div>
                 </div>
                 <div class="project-info">

@@ -16,6 +16,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {  
     font-family: 'Poppins', sans-serif;
     background: #ffffff;
@@ -1440,6 +1444,10 @@ body {
 .project-card:first-child .project-visual {
     background: #000000 !important;
 }
+.project-card:nth-child(2) .project-visual {
+    background: #000000 !important;
+}
+
 
 .project-visual:hover .project-preview-image {
     transform: scale(1.05);
@@ -1688,9 +1696,9 @@ body {
     <nav class="nav container">
         <a href="./index.html" class="logo">K.</a>
         <ul class="nav-links">
-            <li><a href="./index.html">Projects</a></li>
+           <li><a href="./index.html#projects">Projects</a></li>
             <li><a href="./about_me.html">About</a></li>
-            <li><a href="#contact">Resume</a></li>
+            <li><a href="https://drive.google.com/file/d/10PqNTE4Bmdkes-A8w3u6hcsW1UC-pS6h/view?usp=sharing" target="_blank">Resume</a></li>
         </ul>
     </nav>
     </header>
@@ -1733,7 +1741,9 @@ body {
     <div class="hero-title">
         <h1 class="title-text">Parpro<br>Consulting</h1>
         <p class="subtitle-text">Bringing bookkeeping to the digital age</p>
-        <a href="#" class="see-live-link">See It Live</a>
+        <a href="https://www.figma.com/proto/gbyAgFGEQw69fUfLySQ07t/FLUI-25?page-id=140%3A1583&node-id=950-2284&viewport=-33781%2C-29833%2C1.29&t=7PtXj9YpaQzn3yjn-1&scaling=min-zoom&content-scaling=fixed" class="see-live-link" target="_blank" rel="noopener noreferrer">See It Live</a>
+    </div>
+</section>
     </div>
     </section>
 
@@ -2012,11 +2022,7 @@ body {
             <a href="./trucking_academy.html" class="project-card">
                 <div class="project-image">
                     <div class="project-visual">
-                        <div class="doc-icon">🚛</div>
-                        <div class="visual-elements">
-                            <div class="blue-dot-small"></div>
-                            <div class="line-element"></div>
-                        </div>
+                        <img src="./media/trucking_academy/Final_App_Mockp.png" alt="Parpro Consulting Website Preview" class="project-preview-image">
                     </div>
                 </div>
                 <div class="project-info">
