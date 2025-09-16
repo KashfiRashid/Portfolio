@@ -8,12 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+/* Enhanced Documentor CSS - Based on Parpro structure with all original functionality */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {  
     font-family: 'Poppins', sans-serif;
@@ -68,7 +68,7 @@ body {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 clamp(20px, 4vw, 40px);
 }
 
 /* Header */
@@ -78,7 +78,7 @@ body {
     z-index: 100;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.06); */
     padding: 20px 0;
 }
 
@@ -130,7 +130,6 @@ body {
     position: absolute;
     top: clamp(120px, 18vh, 180px);
     right: clamp(40px, 8vw, 100px);
-    
 }
 
 .meta-item {
@@ -511,47 +510,6 @@ body {
     }
 }
 
-/* Ultra small screens */
-@media (max-width: 360px) {
-    .hero {
-        gap: clamp(12px, 3vh, 24px);
-        padding: clamp(12px, 3vw, 20px);
-    }
-
-    .hero-title,
-    .hero-meta {
-        max-width: 280px;
-    }
-
-    .title-text {
-        font-size: clamp(24px, 6.5vw, 32px);
-    }
-
-    .subtitle-text {
-        font-size: clamp(11px, 2.8vw, 14px);
-    }
-
-    .hero-visual {
-        max-width: 320px;
-    }
-
-    .character-circle {
-        width: clamp(160px, 47vw, 200px);
-        height: clamp(160px, 47vw, 200px);
-        font-size: clamp(24px, 7vw, 36px);
-        margin: 0 auto;
-    }
-
-    .see-live-link {
-        font-size: clamp(10px, 2.5vw, 14px);
-    }
-
-    .meta-item {
-        font-size: clamp(8px, 2vw, 11px);
-        margin-bottom: clamp(4px, 1vh, 6px);
-    }
-}
-
 /* Hide nav on mobile */
 @media (max-width: 768px) {
     .nav-links {
@@ -559,10 +517,9 @@ body {
     }
 }
 
-/* About Section */
-
+/* About Section - Enhanced with Parpro styling */
 .about-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
 }
 
@@ -570,61 +527,94 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .about-left {
     flex-shrink: 0;
+    min-width: 200px;
 }
 
 .about-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
+    line-height: 1.2;
 }
 
 .about-right {
     flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
 }
 
 .about-body {
-    font-size: clamp(36px, 5vw, 52px);
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
 }
 
 .about-description {
-    font-size: clamp(13px, 1.3vw, 15px);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    max-width: 420px;
 }
 
 .about-images {
     display: grid;
-    gap: 20px;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
 }
 
 .image-row-single, .image-placeholder {
     background: #f8f8f8;
-    border-radius: 12px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
 }
 
 .image-row-single {
-    height: clamp(300px, 40vh, 400px);
+    width: 100%;
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
 }
 
-.image-row-double {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+.image-row-single img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: clamp(320px, 42vh, 450px);
+}
+
+.image-placeholder:hover {
+    border-color: #ff8c42;
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
 }
 
 .sr-only {
@@ -641,17 +631,18 @@ body {
 
 @media (max-width: 768px) {
     .about-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
 
     .about-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
 
     .about-left {
         align-self: flex-start;
+        min-width: unset;
     }
 
     .about-right {
@@ -660,344 +651,34 @@ body {
     }
 
     .about-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
         line-height: 1.2;
     }
 
     .about-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
         max-width: 100%;
     }
 
     .about-images {
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
 
     .image-row-single {
+        height: auto;
+        margin: 1rem auto;
+    }
+
+    .image-placeholder {
         height: clamp(200px, 35vh, 250px);
     }
-
-    .image-row-double {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
-    }
 }
 
-@media (max-width: 480px) {
-    .about-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
-
-    .about-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .about-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .about-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .about-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .about-images {
-        gap: 12px;
-    }
-
-    .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .image-row-double {
-        gap: 12px;
-    }
-
-    .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
-    }
-}
-
-.image-placeholder {
-    height: clamp(250px, 35vh, 320px);
-}
-
-@media (max-width: 768px) {
-    .about-section {
-        padding: clamp(60px, 10vh, 80px) 0;
-    }
-    .about-content {
-        flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
-    }
-    .about-right {
-        max-width: 100%;
-        padding-top: 0;
-    }
-    .about-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
-    }
-    .about-description {
-        font-size: clamp(12px, 3vw, 14px);
-        max-width: 100%;
-    }
-    .about-images {
-        gap: 16px;
-    }
-    .image-row-single {
-        height: clamp(200px, 35vh, 250px);
-    }
-    .image-row-double {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
-    }
-}
-
-@media (max-width: 480px) {
-    .about-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
-    .about-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-    .about-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-    .about-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-    .about-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-    .about-images {
-        gap: 12px;
-    }
-    .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-    .image-row-double {
-        gap: 12px;
-    }
-    .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
-    }
-}
-
-.about-section {
-    padding: clamp(80px, 12vh, 120px) 0;
-    background: #ffffff;
-}
-
-.about-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
-}
-
-.about-left {
-    flex-shrink: 0;
-}
-
-.about-title {
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 400;
-    color: #1a1a1a;
-    margin: 0;
-    line-height: 1.2;
-}
-
-.about-right {
-    flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
-    text-align: left;
-}
-
-.about-body {
-    font-size: clamp(36px, 5vw, 52px);
-    font-weight: 400;
-    color: #1a1a1a;
-    line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
-    text-align: left;
-}
-
-.about-description {
-    font-size: clamp(13px, 1.3vw, 15px);
-    font-weight: 400;
-    color: #666;
-    line-height: 1.4;
-    margin: 0;
-    max-width: 420px;
-    text-align: left;
-}
-
-/* Image Placeholders - 1 row then 2 row layout */
-.about-images {
-    display: grid;
-    gap: 20px;
-}
-
-.image-row-single, .image-placeholder {
-    background: #f8f8f8;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease;
-}
-
-.image-row-single {
-    width: 100%;
-    height: clamp(300px, 40vh, 400px);
-}
-
-.image-placeholder {
-    width: 100%;
-    height: clamp(250px, 35vh, 320px);
-}
-
-.image-row-single:focus, .image-placeholder:focus {
-    outline: none;
-    border-color: #ff8c42;
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
-}
-
-.image-row-single::before, .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f8f8f8;
-    transition: transform 0.3s ease;
-}
-
-.image-row-single:hover::before, 
-.image-row-single:focus::before,
-.image-placeholder:hover::before,
-.image-placeholder:focus::before {
-    transform: scale(1.05);
-}
-
-/* Mobile About Section */
-@media (max-width: 768px) {
-    .about-section {
-        padding: clamp(60px, 10vh, 80px) 0;
-    }
-
-    .about-content {
-        flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
-    }
-
-    .about-left {
-        align-self: flex-start;
-    }
-
-    .about-right {
-        max-width: 100%;
-        padding-top: 0;
-    }
-
-    .about-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
-        line-height: 1.2;
-    }
-
-    .about-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
-        max-width: 100%;
-    }
-
-    .about-images {
-        gap: 16px;
-    }
-
-    .image-row-single {
-        height: clamp(200px, 35vh, 250px);
-    }
-
-    .image-row-double {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
-    }
-}
-
-/* Small mobile adjustments */
-@media (max-width: 480px) {
-    .about-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
-
-    .about-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .about-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .about-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .about-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .about-images {
-        gap: 12px;
-    }
-
-    .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .image-row-double {
-        gap: 12px;
-    }
-
-    .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
-    }
-}
-
-/* Challenges Section - Same styling as About Section */
+/* Challenges Section - Same styling as about with Parpro enhancements */
 .challenges-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
 }
 
@@ -1005,16 +686,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .challenges-left {
     flex-shrink: 0;
+    min-width: 200px;
 }
 
 .challenges-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
@@ -1023,91 +705,97 @@ body {
 
 .challenges-right {
     flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
 }
 
 .challenges-body {
-    font-size: clamp(36px, 5vw, 52px);
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
 }
 
 .challenges-description {
-    font-size: clamp(13px, 1.3vw, 15px);
+    font-size: clamp(15px, 1.5vw, 18px);
     font-weight: 400;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    max-width: 420px;
 }
 
-/* Challenge Image Placeholders - Same as About */
 .challenges-images {
     display: grid;
-    gap: 20px;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
 }
 
 .challenges-images .image-row-single, .challenges-images .image-placeholder {
     background: #f8f8f8;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .challenges-images .image-row-single {
     width: 100%;
-    height: clamp(300px, 40vh, 400px);
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
+}
+
+.challenges-images .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
 }
 
 .challenges-images .image-placeholder {
     width: 100%;
-    height: clamp(250px, 35vh, 320px);
+    height: clamp(320px, 42vh, 450px);
 }
 
-.challenges-images .image-row-single:focus, .challenges-images .image-placeholder:focus {
-    outline: none;
+.challenges-images .image-placeholder:hover {
     border-color: #ff8c42;
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
 }
 
-.challenges-images .image-row-single::before, .challenges-images .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.challenges-images .image-placeholder {
     width: 100%;
-    height: 100%;
-    background: #f8f8f8;
-    transition: transform 0.3s ease;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-.challenges-images .image-row-single:hover::before, 
-.challenges-images .image-row-single:focus::before,
-.challenges-images .image-placeholder:hover::before,
-.challenges-images .image-placeholder:focus::before {
-    transform: scale(1.05);
+.image-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
 }
 
-/* Mobile Challenges Section */
 @media (max-width: 768px) {
     .challenges-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
 
     .challenges-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
 
     .challenges-left {
         align-self: flex-start;
+        min-width: unset;
     }
 
     .challenges-right {
@@ -1116,80 +804,39 @@ body {
     }
 
     .challenges-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
         line-height: 1.2;
     }
 
     .challenges-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
         max-width: 100%;
     }
 
     .challenges-images {
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
 
     .challenges-images .image-row-single {
+        height: auto;
+        margin: 1rem auto;
+    }
+
+    .image-row-double {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vw, 24px);
+    }
+
+    .challenges-images .image-placeholder {
         height: clamp(200px, 35vh, 250px);
     }
-
-    .challenges-images .image-row-double {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .challenges-images .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
-    }
 }
 
-/* Small mobile adjustments */
-@media (max-width: 480px) {
-    .challenges-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
-
-    .challenges-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .challenges-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .challenges-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .challenges-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .challenges-images {
-        gap: 12px;
-    }
-
-    .challenges-images .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .challenges-images .image-row-double {
-        gap: 12px;
-    }
-
-    .challenges-images .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
-    }
-}
-
-/* Research Section - Same styling as About/Challenges Sections */
+/* Research Section - Same enhanced styling */
 .research-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
 }
 
@@ -1197,16 +844,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .research-left {
     flex-shrink: 0;
+    min-width: 200px;
 }
 
 .research-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
@@ -1215,91 +863,84 @@ body {
 
 .research-right {
     flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
 }
 
 .research-body {
-    font-size: clamp(36px, 5vw, 52px);
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
 }
 
 .research-description {
-    font-size: clamp(13px, 1.3vw, 15px);
+    font-size: clamp(15px, 1.5vw, 18px);
     font-weight: 400;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    max-width: 420px;
 }
 
-/* Research Image Placeholders - Same as About/Challenges */
 .research-images {
     display: grid;
-    gap: 20px;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
 }
 
 .research-images .image-row-single, .research-images .image-placeholder {
     background: #f8f8f8;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .research-images .image-row-single {
     width: 100%;
-    height: clamp(300px, 40vh, 400px);
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
+}
+
+.research-images .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
 }
 
 .research-images .image-placeholder {
     width: 100%;
-    height: clamp(250px, 35vh, 320px);
+    height: clamp(320px, 42vh, 450px);
 }
 
-.research-images .image-row-single:focus, .research-images .image-placeholder:focus {
-    outline: none;
+.research-images .image-placeholder:hover {
     border-color: #ff8c42;
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
 }
 
-.research-images .image-row-single::before, .research-images .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f8f8f8;
-    transition: transform 0.3s ease;
-}
-
-.research-images .image-row-single:hover::before, 
-.research-images .image-row-single:focus::before,
-.research-images .image-placeholder:hover::before,
-.research-images .image-placeholder:focus::before {
-    transform: scale(1.05);
-}
-
-/* Mobile Research Section */
 @media (max-width: 768px) {
     .research-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
 
     .research-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
 
     .research-left {
         align-self: flex-start;
+        min-width: unset;
     }
 
     .research-right {
@@ -1308,272 +949,217 @@ body {
     }
 
     .research-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
         line-height: 1.2;
     }
 
     .research-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
         max-width: 100%;
     }
 
     .research-images {
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
 
     .research-images .image-row-single {
+        height: auto;
+        margin: 1rem auto;
+    }
+
+    .research-images .image-placeholder {
         height: clamp(200px, 35vh, 250px);
     }
-
-    .research-images .image-row-double {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .research-images .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
-    }
 }
 
-/* Small mobile adjustments */
-@media (max-width: 480px) {
-    .research-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
 
-    .research-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .research-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .research-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .research-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .research-images {
-        gap: 12px;
-    }
-
-    .research-images .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .research-images .image-row-double {
-        gap: 12px;
-    }
-
-    .research-images .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
-    }
-}
-
-/* Design Process Section - Same styling as other sections */
+/* Design Process Section - Enhanced styling */
 .design-process-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
 }
-
 .design-process-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
-
 .design-process-left {
     flex-shrink: 0;
+    min-width: 200px;
 }
-
 .design-process-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
     line-height: 1.2;
 }
-
 .design-process-right {
     flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
 }
-
 .design-process-body {
-    font-size: clamp(36px, 5vw, 52px);
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
 }
-
 .design-process-description {
-    font-size: clamp(13px, 1.3vw, 15px);
+    font-size: clamp(15px, 1.5vw, 18px);
     font-weight: 400;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    max-width: 420px;
 }
-
-/* Design Process Image Placeholders */
 .design-process-images {
     display: grid;
-    gap: 20px;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
 }
-
 .design-process-images .image-row-single, .design-process-images .image-placeholder {
     background: #f8f8f8;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: all 0.4s ease;
 }
-
 .design-process-images .image-row-single {
     width: 100%;
-    height: clamp(300px, 40vh, 400px);
+    height: auto;
+    max-width: none;
+    margin: 2rem auto;
+    display: block;
+    object-fit: contain;
+    filter: brightness(80%);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
-
+.design-process-images .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
 .design-process-images .image-placeholder {
     width: 100%;
-    height: clamp(250px, 35vh, 320px);
+    height: clamp(320px, 42vh, 450px);
 }
-
-.design-process-images .image-row-single:focus, .design-process-images .image-placeholder:focus {
-    outline: none;
+.design-process-images .image-placeholder:hover {
     border-color: #ff8c42;
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
 }
-
-.design-process-images .image-row-single::before, .design-process-images .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f8f8f8;
-    transition: transform 0.3s ease;
-}
-
-.design-process-images .image-row-single:hover::before, 
-.design-process-images .image-row-single:focus::before,
-.design-process-images .image-placeholder:hover::before,
-.design-process-images .image-placeholder:focus::before {
-    transform: scale(1.05);
-}
-
-/* Mobile Design Process Section */
 @media (max-width: 768px) {
     .design-process-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
-
     .design-process-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
-
     .design-process-left {
         align-self: flex-start;
+        min-width: unset;
     }
-
     .design-process-right {
         max-width: 100%;
         padding-top: 0;
     }
-
     .design-process-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
         line-height: 1.2;
     }
-
     .design-process-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
         max-width: 100%;
     }
-
     .design-process-images {
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
-
     .design-process-images .image-row-single {
+        height: auto;
+        margin: 1rem auto;
+    }
+    .design-process-images .image-placeholder {
         height: clamp(200px, 35vh, 250px);
     }
-
-    .design-process-images .image-row-double {
-        display: grid;
+    .image-row-triple {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
+}
+.image-row-triple {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(16px, 2vw, 24px);
+}
+.design-process-images .process-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 12px;
+    filter: brightness(80%);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+.design-process-images .process-image:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
 
-    .design-process-images .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
+}
+.design-process-images .process-image:nth-child(2) {
+    object-position: center bottom;
+}
+
+.mobile-ui-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2vw, 24px);
+    margin-bottom: clamp(20px, 3vh, 30px);
+}
+
+.mobile-ui-image {
+    width: 100%;
+    aspect-ratio: 9/16; /* Mobile phone aspect ratio */
+    object-fit: cover;
+    border-radius: 20px; /* More rounded like mobile devices */
+    filter: brightness(80%);
+    border: 2px solid #ddd;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-ui-image:hover {
+    filter: brightness(100%);
+    border: 2px solid #ff8c42;
+}
+
+@media (max-width: 768px) {
+    .mobile-ui-row {
+        grid-template-columns: 1fr;
+        gap: clamp(16px, 4vw, 20px);
+    }
+    
+    .mobile-ui-image {
+        max-width: 300px;
+        margin: 0 auto;
     }
 }
 
-/* Small mobile adjustments */
-@media (max-width: 480px) {
-    .design-process-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
 
-    .design-process-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .design-process-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .design-process-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .design-process-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .design-process-images {
-        gap: 12px;
-    }
-
-    .design-process-images .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .design-process-images .image-row-double {
-        gap: 12px;
-    }
-
-    .design-process-images .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
-    }
-}
-
-/* Solution Section - Same styling as other sections */
+/* Solution Section - Enhanced styling */
 .solution-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
 }
 
@@ -1581,16 +1167,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .solution-left {
     flex-shrink: 0;
+    min-width: 200px;
 }
 
 .solution-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
@@ -1599,91 +1186,84 @@ body {
 
 .solution-right {
     flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
 }
 
 .solution-body {
-    font-size: clamp(36px, 5vw, 52px);
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
 }
 
 .solution-description {
-    font-size: clamp(13px, 1.3vw, 15px);
+    font-size: clamp(15px, 1.5vw, 18px);
     font-weight: 400;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    max-width: 420px;
 }
 
-/* Solution Image Placeholders */
 .solution-images {
     display: grid;
-    gap: 20px;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
 }
 
 .solution-images .image-row-single, .solution-images .image-placeholder {
     background: #f8f8f8;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .solution-images .image-row-single {
     width: 100%;
-    height: clamp(300px, 40vh, 400px);
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
+}
+
+.solution-images .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
 }
 
 .solution-images .image-placeholder {
     width: 100%;
-    height: clamp(250px, 35vh, 320px);
+    height: clamp(320px, 42vh, 450px);
 }
 
-.solution-images .image-row-single:focus, .solution-images .image-placeholder:focus {
-    outline: none;
+.solution-images .image-placeholder:hover {
     border-color: #ff8c42;
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
 }
 
-.solution-images .image-row-single::before, .solution-images .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f8f8f8;
-    transition: transform 0.3s ease;
-}
-
-.solution-images .image-row-single:hover::before, 
-.solution-images .image-row-single:focus::before,
-.solution-images .image-placeholder:hover::before,
-.solution-images .image-placeholder:focus::before {
-    transform: scale(1.05);
-}
-
-/* Mobile Solution Section */
 @media (max-width: 768px) {
     .solution-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
 
     .solution-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
 
     .solution-left {
         align-self: flex-start;
+        min-width: unset;
     }
 
     .solution-right {
@@ -1692,80 +1272,146 @@ body {
     }
 
     .solution-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
         line-height: 1.2;
     }
 
     .solution-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
         max-width: 100%;
     }
 
     .solution-images {
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
 
     .solution-images .image-row-single {
+        height: auto;
+        margin: 1rem auto;
+    }
+
+    .solution-images .image-placeholder {
         height: clamp(200px, 35vh, 250px);
     }
+}
 
-    .solution-images .image-row-double {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+/* Solution Showcase Images - Optimized sizing */
+.solution-showcase-image {
+    width: 100%;
+    height: 350px; /* Fixed height for uniformity */
+    object-fit: contain; /* Shows full image without cropping */
+    object-position: center top; /* Focuses on top of image */
+    border-radius: 16px;
+    filter: brightness(80%);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    background: #f8f8f8; /* Light background for any empty space */
+    padding: 10px; /* Small padding around the image */
+}
 
-    .solution-images .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
+.solution-showcase-image:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .solution-showcase-image {
+        height: 280px;
+        padding: 8px;
     }
 }
 
-/* Small mobile adjustments */
 @media (max-width: 480px) {
-    .solution-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
-
-    .solution-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .solution-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .solution-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .solution-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .solution-images {
-        gap: 12px;
-    }
-
-    .solution-images .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .solution-images .image-row-double {
-        gap: 12px;
-    }
-
-    .solution-images .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
+    .solution-showcase-image {
+        height: 220px;
+        padding: 6px;
     }
 }
 
-/* Results Section - Same styling as other sections */
+
+/* Solution Videos - Mobile Optimized */
+.solution-videos {
+    margin-top: clamp(40px, 6vh, 60px);
+}
+
+.solution-videos .interaction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
+}
+
+.solution-videos .interaction-item {
+    text-align: center;
+    filter: brightness(80%);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: clamp(16px, 2vh, 20px);
+    transition: all 0.4s ease;
+}
+
+.solution-videos .interaction-item:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+}
+
+.solution-videos .interaction-title {
+    font-size: clamp(16px, 1.4vw, 18px);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 clamp(16px, 2vh, 20px) 0;
+}
+
+/* Mobile Video Container - Adjusted for mobile aspect ratio */
+.mobile-video {
+    aspect-ratio: 9/16; /* Mobile phone aspect ratio */
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.mobile-video video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Solution Images */
+.solution-images .solution-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    border-radius: 16px;
+    filter: brightness(80%);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.solution-images .solution-image:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
+}
+
+@media (max-width: 768px) {
+    .solution-videos .interaction-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 4vw, 24px);
+    }
+    
+    .mobile-video {
+        max-width: 250px;
+    }
+}
+
+/* Results Section - Enhanced styling */
 .results-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
 }
 
@@ -1773,16 +1419,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .results-left {
     flex-shrink: 0;
+    min-width: 200px;
 }
 
 .results-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
@@ -1791,91 +1438,84 @@ body {
 
 .results-right {
     flex: 1;
-    max-width: 50%;
-    padding-top: clamp(40px, 6vh, 60px);
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
 }
 
 .results-body {
-    font-size: clamp(36px, 5vw, 52px);
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0 0 clamp(20px, 2.5vh, 28px) 0;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
 }
 
 .results-description {
-    font-size: clamp(13px, 1.3vw, 15px);
+    font-size: clamp(15px, 1.5vw, 18px);
     font-weight: 400;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    max-width: 420px;
 }
 
-/* Results Image Placeholders */
 .results-images {
     display: grid;
-    gap: 20px;
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: clamp(20px, 3vh, 30px);
 }
 
 .results-images .image-row-single, .results-images .image-placeholder {
     background: #f8f8f8;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .results-images .image-row-single {
     width: 100%;
-    height: clamp(300px, 40vh, 400px);
+    height: auto;
+    max-width: none; 
+    margin: 2rem auto; 
+    display: block;
+    object-fit: contain; 
+    filter: brightness(80%); 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
+}
+
+.results-images .image-row-single:hover {
+    filter: brightness(100%);
+    border: 1px solid #ff8c42;
 }
 
 .results-images .image-placeholder {
     width: 100%;
-    height: clamp(250px, 35vh, 320px);
+    height: clamp(320px, 42vh, 450px);
 }
 
-.results-images .image-row-single:focus, .results-images .image-placeholder:focus {
-    outline: none;
+.results-images .image-placeholder:hover {
     border-color: #ff8c42;
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.2);
 }
 
-.results-images .image-row-single::before, .results-images .image-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f8f8f8;
-    transition: transform 0.3s ease;
-}
-
-.results-images .image-row-single:hover::before, 
-.results-images .image-row-single:focus::before,
-.results-images .image-placeholder:hover::before,
-.results-images .image-placeholder:focus::before {
-    transform: scale(1.05);
-}
-
-/* Mobile Results Section */
 @media (max-width: 768px) {
     .results-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
 
     .results-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
 
     .results-left {
         align-self: flex-start;
+        min-width: unset;
     }
 
     .results-right {
@@ -1884,80 +1524,34 @@ body {
     }
 
     .results-body {
-        font-size: clamp(24px, 6vw, 32px);
-        margin-bottom: clamp(16px, 3vh, 20px);
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
         line-height: 1.2;
     }
 
     .results-description {
-        font-size: clamp(12px, 3vw, 14px);
-        line-height: 1.5;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
         max-width: 100%;
     }
 
     .results-images {
-        gap: 16px;
+        gap: clamp(20px, 4vw, 24px);
     }
 
     .results-images .image-row-single {
-        height: clamp(200px, 35vh, 250px);
-    }
-
-    .results-images .image-row-double {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
+        height: auto;
+        margin: 1rem auto;
     }
 
     .results-images .image-placeholder {
-        height: clamp(150px, 30vh, 180px);
-    }
-}
-
-/* Small mobile adjustments */
-@media (max-width: 480px) {
-    .results-section {
-        padding: clamp(48px, 8vh, 64px) 0;
-    }
-
-    .results-content {
-        gap: clamp(20px, 4vh, 24px);
-        margin-bottom: clamp(32px, 6vh, 48px);
-    }
-
-    .results-title {
-        font-size: clamp(20px, 5vw, 24px);
-    }
-
-    .results-body {
-        font-size: clamp(20px, 5.5vw, 28px);
-        margin-bottom: clamp(12px, 2.5vh, 16px);
-    }
-
-    .results-description {
-        font-size: clamp(11px, 2.8vw, 13px);
-    }
-
-    .results-images {
-        gap: 12px;
-    }
-
-    .results-images .image-row-single {
-        height: clamp(180px, 40vw, 220px);
-    }
-
-    .results-images .image-row-double {
-        gap: 12px;
-    }
-
-    .results-images     .image-placeholder {
-        height: clamp(120px, 35vw, 150px);
+        height: clamp(200px, 35vh, 250px);
     }
 }
 
 /* ========== TESTIMONIAL SECTION ========== */
 .testimonial-section {
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     background: #ffffff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
@@ -1966,17 +1560,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: clamp(60px, 10vh, 100px);
-    gap: 20px;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .testimonial-left {
     flex-shrink: 0;
     width: auto;
+    min-width: 200px;
 }
 
 .testimonial-title {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(28px, 3.5vw, 36px);
     font-weight: 400;
     color: #1a1a1a;
     margin: 0;
@@ -1985,7 +1580,7 @@ body {
 
 .testimonial-right {
     flex: 1;
-    padding-top: clamp(40px, 6vh, 60px);
+    padding-top: clamp(50px, 8vh, 80px);
     text-align: center;
     min-width: 0;
     display: flex;
@@ -1999,22 +1594,22 @@ body {
 }
 
 .quote-mark {
-    font-size: clamp(80px, 10vw, 140px);
+    font-size: clamp(100px, 12vw, 160px);
     font-weight: 700;
     color: #1a1a1a;
     line-height: 1;
-    margin-bottom: clamp(25px, 4vh, 35px);
+    margin-bottom: clamp(30px, 5vh, 40px);
     display: block;
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
 .testimonial-text {
-    font-size: clamp(28px, 4vw, 42px);
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 400;
     color: #1a1a1a;
     line-height: 1.2;
-    margin: 0 0 clamp(30px, 4vh, 40px) 0;
+    margin: 0 0 clamp(40px, 6vh, 50px) 0;
     text-align: center;
     font-family: 'Poppins', sans-serif;
 }
@@ -2024,15 +1619,15 @@ body {
 }
 
 .author-name {
-    font-size: clamp(16px, 1.8vw, 20px);
+    font-size: clamp(18px, 2vw, 22px);
     font-weight: 600;
     color: #1a1a1a;
-    margin: 0 0 4px 0;
+    margin: 0 0 6px 0;
     text-align: center;
 }
 
 .author-title {
-    font-size: clamp(14px, 1.4vw, 16px);
+    font-size: clamp(16px, 1.6vw, 18px);
     font-weight: 400;
     color: #999;
     margin: 0;
@@ -2041,17 +1636,18 @@ body {
 
 @media (max-width: 768px) {
     .testimonial-section {
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
 
     .testimonial-content {
         flex-direction: column;
-        gap: clamp(24px, 4vh, 32px);
-        margin-bottom: clamp(48px, 8vh, 64px);
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
     }
 
     .testimonial-left {
         align-self: flex-start;
+        min-width: unset;
     }
 
     .testimonial-right {
@@ -2061,17 +1657,17 @@ body {
     }
 
     .quote-mark {
-        font-size: clamp(50px, 7vw, 80px);
-        margin-bottom: clamp(16px, 2vh, 24px);
+        font-size: clamp(60px, 8vw, 90px);
+        margin-bottom: clamp(20px, 3vh, 28px);
     }
 
     .testimonial-text {
-        font-size: clamp(20px, 5vw, 28px);
-        margin-bottom: clamp(24px, 3vh, 32px);
+        font-size: clamp(24px, 6vw, 32px);
+        margin-bottom: clamp(30px, 4vh, 36px);
     }
 
     .testimonial-title {
-        font-size: clamp(20px, 5vw, 24px);
+        font-size: clamp(24px, 6vw, 28px);
     }
 }
 
@@ -2164,14 +1760,34 @@ body {
     justify-content: center;
     position: relative;
     background: #f8f9fa;
+    flex-direction: column;
 }
 
-.explore-preview-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    padding: 20px;
+.doc-icon {
+    font-size: clamp(60px, 8vw, 100px);
+    margin-bottom: 20px;
+}
+
+.visual-elements {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blue-dot-small {
+    width: 20px;
+    height: 20px;
+    background: #4facfe;
+    border-radius: 50%;
+}
+
+.line-element {
+    width: 40px;
+    height: 2px;
+    background: #ddd;
 }
 
 .explore-info {
@@ -2252,270 +1868,10 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    .more-explore-section {
-        padding: clamp(40px, 8vh, 60px) 0;
-    }
-
-    .explore-content {
-        margin-bottom: clamp(32px, 5vh, 48px);
-    }
-
-    .explore-grid {
-        gap: clamp(16px, 3vh, 24px);
-    }
-
-    .explore-image {
-        height: clamp(180px, 25vh, 240px);
-    }
-}
-
-/* ========== PROJECTS SECTION ========== */
-.projects-section {
-    padding: clamp(80px, 12vh, 120px) 0;
-    background: #ffffff;
-}
-
-.projects-content {
-    margin-bottom: clamp(60px, 10vh, 100px);
-}
-
-.projects-left {
-    flex-shrink: 0;
-}
-
-.projects-title {
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 400;
-    color: #1a1a1a;
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* Projects Grid */
-.projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(20px, 2.5vw, 32px);
-    align-items: start;
-}
-
-.project-card {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    display: block; /* ensures the whole card is clickable */
-}
-
-.project-card h3,
-.project-card p,
-.project-card span {
-    text-decoration: none;
-    color: inherit;
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
-
-.project-card:hover {
-    border-color: rgba(255, 140, 66, 0.2);
-    box-shadow: 0 8px 32px rgba(255, 140, 66, 0.15);
-}
-
-.project-card.third-project {
-    grid-column: 1 / -1;
-    width: min(100%, 600px);
-    margin: 0 auto;
-}
-
-.project-image {
-    width: 100%;
-    height: clamp(300px, 40vh, 400px);
-    position: relative;
-    overflow: hidden;
-    background: #f8f9fa;
-    z-index: 2;
-}
-
-/* Project Visuals */
-.project-visual {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background: #f8f9fa;
-    transition: transform 0.3s ease;
-}
-
-/* Project preview image for actual screenshots */
-.project-preview-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    padding: 20px; /* Add some padding around the image */
-    transition: transform 0.3s ease;
-}
-
-.project-card:first-child .project-visual {
-    background: #000000 !important;
-}
-
-.project-visual:hover .project-preview-image {
-    transform: scale(1.05);
-}
-
-.gradient-purple {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.gradient-blue {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-
-/* Remove abstract shapes - keep blank */
-.abstract-shape {
-    display: none;
-}
-
-.geometric-pattern {
-    display: none;
-}
-
-/* Project Info */
-.project-info {
-    padding: clamp(20px, 3vh, 32px);
-    background: #ffffff;
-    position: relative;
-    z-index: 2;
-}
-
-.project-name {
-    font-size: clamp(18px, 2.2vw, 24px);
-    font-weight: 500;
-    color: #1a1a1a;
-    margin: 0 0 clamp(6px, 1vh, 8px) 0;
-    line-height: 1.2;
-}
-
-.project-description {
-    font-size: clamp(14px, 1.4vw, 16px);
-    color: #666;
-    margin: 0 0 clamp(12px, 2vh, 16px) 0;
-    font-weight: 400;
-}
-
-.project-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.tag {
-    padding: clamp(4px, 0.5vh, 6px) clamp(8px, 1vw, 12px);
-    background: #f8f9fa;
-    color: #666;
-    font-size: clamp(11px, 1.2vw, 13px);
-    font-weight: 500;
-    border-radius: 16px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-/* Mobile Projects Section */
-@media (max-width: 768px) {
-    .projects-section {
-        padding: clamp(60px, 10vh, 80px) 0;
-    }
-
-    .projects-content {
-        margin-bottom: clamp(40px, 6vh, 60px);
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: clamp(20px, 4vh, 32px);
-    }
-
-    .project-card.third-project {
-        grid-column: 1;
-        width: 100%;
-        margin: 0;
-    }
-
-    .project-image {
-        height: clamp(200px, 30vh, 280px);
-    }
-
-    .project-info {
-        padding: clamp(16px, 3vh, 24px);
-    }
-
-    .project-name {
-        font-size: clamp(16px, 4vw, 20px);
-    }
-
-    .project-description {
-        font-size: clamp(13px, 3vw, 15px);
-    }
-
-    .tag {
-        font-size: clamp(10px, 2.5vw, 12px);
-        padding: clamp(3px, 0.5vh, 5px) clamp(6px, 1.5vw, 10px);
-    }
-}
-
-@media (max-width: 480px) {
-    .projects-section {
-        padding: clamp(40px, 8vh, 60px) 0;
-    }
-
-    .projects-content {
-        margin-bottom: clamp(32px, 5vh, 48px);
-    }
-
-    .projects-grid {
-        gap: clamp(16px, 3vh, 24px);
-    }
-
-    .project-image {
-        height: clamp(180px, 25vh, 240px);
-    }
-
-    .project-card.featured .project-image {
-        height: clamp(200px, 30vh, 280px);
-    }
-}
-
-
 /* ========== CONTACT SECTION ========== */
 .contact-section {
     background: #000000;
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: clamp(100px, 15vh, 140px) 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -2524,13 +1880,12 @@ body {
 
 .contact-header {
     position: absolute;
-    /* right: clamp(40px, 6vw, 60px); */
     z-index: 2;
 }
 
 .contact-linkedin {
     color: #ffffff;
-    font-size: clamp(14px, 1.4vw, 16px);
+    font-size: clamp(16px, 1.6vw, 18px);
     font-weight: 400;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -2545,7 +1900,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    padding-top: clamp(60px, 10vh, 100px);
+    padding-top: clamp(80px, 12vh, 120px);
 }
 
 .contact-main {
@@ -2553,31 +1908,30 @@ body {
 }
 
 .contact-heading {
-    font-size: clamp(36px, 6vw, 72px);
+    font-size: clamp(42px, 7vw, 84px);
     font-weight: 400;
     color: #ffffff;
     line-height: 1.1;
-    margin-bottom: clamp(40px, 6vh, 60px);
-    max-width: 900px;
+    margin-bottom: clamp(50px, 8vh, 70px);
+    max-width: 1000px;
 }
 
 .contact-actions {
     display: flex;
     align-items: center;
-    gap: clamp(30px, 4vw, 50px);
-    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(40px, 6vw, 60px);
+    margin-bottom: clamp(100px, 15vh, 140px);
 }
-
 
 .availability {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 
 .availability-dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: #4ade80;
     border-radius: 50%;
     animation: pulse 2s infinite;
@@ -2585,7 +1939,7 @@ body {
 
 .availability-text {
     color: #ffffff;
-    font-size: clamp(14px, 1.4vw, 16px);
+    font-size: clamp(16px, 1.6vw, 18px);
     font-weight: 400;
 }
 
@@ -2599,26 +1953,26 @@ body {
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .phone, .email {
     color: #ffffff;
-    font-size: clamp(14px, 1.4vw, 16px);
+    font-size: clamp(16px, 1.6vw, 18px);
     font-weight: 400;
 }
 
 .email-container {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .copy-btn {
     background: transparent;
     border: 1px solid #ffffff;
     color: #ffffff;
-    padding: 4px 8px;
+    padding: 6px 10px;
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
@@ -2640,7 +1994,7 @@ body {
 .copyright {
     text-align: right;
     color: #ffffff;
-    font-size: clamp(14px, 1.4vw, 16px);
+    font-size: clamp(16px, 1.6vw, 18px);
     font-weight: 400;
     line-height: 1.4;
 }
@@ -2659,13 +2013,13 @@ body {
 @media (max-width: 768px) {
     .contact-section {
         min-height: auto;
-        padding: clamp(60px, 10vh, 80px) 0;
+        padding: clamp(80px, 12vh, 100px) 0;
     }
     
     .contact-header {
         position: static;
         text-align: right;
-        margin-bottom: clamp(40px, 6vh, 60px);
+        margin-bottom: clamp(50px, 8vh, 70px);
     }
     
     .contact-content {
@@ -2673,20 +2027,20 @@ body {
     }
     
     .contact-heading {
-        font-size: clamp(28px, 7vw, 48px);
-        margin-bottom: clamp(30px, 5vh, 40px);
+        font-size: clamp(32px, 8vw, 56px);
+        margin-bottom: clamp(40px, 6vh, 50px);
     }
     
     .contact-actions {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
-        margin-bottom: clamp(60px, 10vh, 80px);
+        gap: 24px;
+        margin-bottom: clamp(80px, 12vh, 100px);
     }
     
     .contact-footer {
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
         align-items: flex-start;
     }
     
@@ -2702,7 +2056,6 @@ body {
 </style>
 
 <script>
-    
 // custom cursor with contact section detection
 document.addEventListener('DOMContentLoaded', function() {
     const cursor = document.querySelector('.custom-cursor');
@@ -2724,15 +2077,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // User is in contact section - change cursor to white
                     cursor.classList.add('in-contact');
                 } else {
-                    // User left contact section - change back to dark
                     cursor.classList.remove('in-contact');
                 }
             });
         }, {
-            threshold: 0.1 // Trigger when 10% of contact section is visible
+            threshold: 0.1
         });
         
         observer.observe(contactSection);
@@ -2778,6 +2129,38 @@ function copyEmail() {
         console.error('Failed to copy email: ', err);
     });
 }
+
+// Video auto-play on hover functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video');
+    
+    videos.forEach(video => {
+        // Mute videos for auto-play (required by browsers)
+        video.muted = true;
+        
+        // Add hover event listeners
+        video.addEventListener('mouseenter', function() {
+            this.play().catch(e => console.log('Video play failed:', e));
+        });
+        
+        video.addEventListener('mouseleave', function() {
+            this.pause();
+        });
+        
+        // Click to unmute
+        video.addEventListener('click', function() {
+            if (this.muted) {
+                this.muted = false;
+            }
+        });
+        
+        // Reset when video ends
+        video.addEventListener('ended', function() {
+            this.currentTime = 0;
+        });
+    });
+});
+
 </script>
 
 </head>
@@ -2786,7 +2169,6 @@ function copyEmail() {
 <!-- Custom Cursor -->
 <div class="custom-cursor"></div>
 
-<!-- Header -->
 <!-- Header -->
 <header class="header">
     <nav class="nav container">
@@ -2797,7 +2179,7 @@ function copyEmail() {
             <li><a href="#Resume">Resume</a></li>
         </ul>
     </nav>
-    </header>
+</header>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -2843,35 +2225,23 @@ function copyEmail() {
 
 <!-- About Section -->
 <section class="about-section">
-<div class="container">
-    <div class="about-content">
-        <!-- Left side - About title -->
-        <div class="about-left">
-            <h2 class="about-title">about.</h2>
+    <div class="container">
+        <div class="about-content">
+            <!-- Left side - About title -->
+            <div class="about-left">
+                <h2 class="about-title">about.</h2>
+            </div>
+            <!-- Right side - Content -->
+            <div class="about-right">
+                <p class="about-body">DocuMentor is an all-in-one app guide for international students.</p>
+                <p class="about-description">A comprehensive mobile application designed to help international students navigate studying abroad essentials.</p>
+            </div>
         </div>
-
-        <!-- Right side - Content -->
-        <div class="about-right">
-            <p class="about-body">DocuMentor is an all-in-one app guide for international students.</p>
-            <p class="about-description">A comprehensive mobile application designed to help international students navigate studying abroad essentials.</p>
-        </div>
-    </div>
-
-    <!-- Image Placeholders -->
-    <div class="about-images">
-        <button class="image-row-single" tabindex="0" aria-label="View project screenshot 1">
-            <span class="sr-only">Project screenshot showing main interface</span>
-        </button>
-        <div class="image-row-double">
-            <button class="image-placeholder" tabindex="0" aria-label="View project screenshot 2">
-                <span class="sr-only">Project screenshot showing mobile view</span>
-            </button>
-            <button class="image-placeholder" tabindex="0" aria-label="View project screenshot 3">
-                <span class="sr-only">Project screenshot showing user flow</span>
-            </button>
+        <!-- Image Section -->
+        <div class="about-images">
+            <img src="./media/documentor/App.png" alt="DocuMentor app interface" class="image-row-single">
         </div>
     </div>
-</div>
 </section>
 
 <!-- Challenges Section -->
@@ -2882,7 +2252,6 @@ function copyEmail() {
         <div class="challenges-left">
             <h2 class="challenges-title">challenge.</h2>
         </div>
-
         <!-- Right side - Content -->
         <div class="challenges-right">
             <p class="challenges-body">Cognitive overload prevents progress.</p>
@@ -2892,18 +2261,14 @@ function copyEmail() {
 
     <!-- Image Placeholders -->
     <div class="challenges-images">
-        <button class="image-row-single" tabindex="0" aria-label="View challenge screenshot 1">
-            <span class="sr-only">Challenge screenshot showing complex government website</span>
-        </button>
-        <div class="image-row-double">
-            <button class="image-placeholder" tabindex="0" aria-label="View challenge screenshot 2">
-                <span class="sr-only">Challenge screenshot showing information overload</span>
-            </button>
-            <button class="image-placeholder" tabindex="0" aria-label="View challenge screenshot 3">
-                <span class="sr-only">Challenge screenshot showing user confusion</span>
-            </button>
-        </div>
+        <img src="./media/documentor/Challenges_1.png" alt="Challenge screenshot showing information overload" class="image-row-single">
     </div>
+
+    <!-- Image Placeholders -->
+    <div class="challenges-images">
+        <img src="./media/documentor/Challenges_2.png" alt="Challenge screenshot showing information overload" class="image-row-single">
+    </div>
+
 </div>
 </section>
 
@@ -2915,92 +2280,121 @@ function copyEmail() {
         <div class="research-left">
             <h2 class="research-title">research</h2>
         </div>
-
         <!-- Right side - Content -->
         <div class="research-right">
             <p class="research-body">45 interviews across 12+ countries revealed key pain points.</p>
             <p class="research-description">Information overload, unclear progress, and complex navigation.</p>
         </div>
     </div>
-
-    <!-- Image Placeholders -->
+    <!-- Single Research Image -->
     <div class="research-images">
-        <button class="image-row-single" tabindex="0" aria-label="View research screenshot 1">
-            <span class="sr-only">Research screenshot showing interview insights</span>
-        </button>
-        <div class="image-row-double">
-            <button class="image-placeholder" tabindex="0" aria-label="View research screenshot 2">
-                <span class="sr-only">Research screenshot showing user pain points</span>
-            </button>
-            <button class="image-placeholder" tabindex="0" aria-label="View research screenshot 3">
-                <span class="sr-only">Research screenshot showing key findings</span>
-            </button>
-        </div>
+        <img src="./media/documentor/PainPoints.png" alt="Research findings showing user pain points and key insights" class="image-row-single">
     </div>
 </div>
 </section>
 
 <!-- Design Process Section -->
-<section class="about-section">
+<section class="design-process-section">
 <div class="container">
-    <div class="about-content">
+    <div class="design-process-content">
         <!-- Left side - Design Process title -->
-        <div class="about-left">
-            <h2 class="about-title">design process</h2>
+        <div class="design-process-left">
+            <h2 class="design-process-title">design process</h2>
         </div>
-
         <!-- Right side - Content -->
-        <div class="about-right">
-            <p class="about-body">From sketches to solutions.</p>
-            <p class="about-description">Rapid exploration through sketching led to two core concepts: breaking tasks into micro-steps and visual progress tracking.</p>
+        <div class="design-process-right">
+            <p class="design-process-body">From sketches to solutions.</p>
+            <p class="design-process-description">Rapid exploration through sketching led to two core concepts: breaking tasks into micro-steps and visual progress tracking.</p>
         </div>
     </div>
-
-    <!-- Image Placeholders -->
-    <div class="about-images">
-        <button class="image-row-single" tabindex="0" aria-label="View design process screenshot 1">
-            <img src="./media/"><!-- <span class="sr-only">Design process screenshot showing sketches</span> -->
-        </button>
+    <!-- Three Rows of Two Images Each -->
+    <div class="design-process-images">
         <div class="image-row-double">
-            <button class="image-placeholder" tabindex="0" aria-label="View design process screenshot 2">
-                <span class="sr-only">Design process screenshot showing micro-steps concept</span>
-            </button>
-            <button class="image-placeholder" tabindex="0" aria-label="View design process screenshot 3">
-                <span class="sr-only">Design process screenshot showing progress tracking</span>
-            </button>
+            <img src="./media/documentor/sketch-1.png" alt="Initial sketches 1" class="process-image">
+            <img src="./media/documentor/sketch-2.png" alt="Initial sketches 2" class="process-image">
         </div>
+
+        <div class="mobile-ui-row">
+            <img src="./media/documentor/1.png" alt="Wireframes 1" class="mobile-ui-image">
+            <img src="./media/documentor/3.png" alt="Wireframes 2" class="mobile-ui-image">
+        </div>
+        <div class="mobile-ui-row">
+            <img src="./media/documentor/4.png" alt="Final concepts 1" class="mobile-ui-image">
+            <img src="./media/documentor/5.png" alt="Final concepts 2" class="mobile-ui-image">
+        </div>
+
+        <div class="mobile-ui-row">
+            <img src="./media/documentor/6.png" alt="Wireframes 1" class="mobile-ui-image">
+            <img src="./media/documentor/7.png" alt="Wireframes 2" class="mobile-ui-image">
+        </div>
+        
     </div>
 </div>
 </section>
 
 <!-- Solution Section -->
-<section class="about-section">
+<section class="solution-section">
 <div class="container">
-    <div class="about-content">
+    <div class="solution-content">
         <!-- Left side - Solution title -->
-        <div class="about-left">
-            <h2 class="about-title">solution</h2>
+        <div class="solution-left">
+            <h2 class="solution-title">solution</h2>
         </div>
-
         <!-- Right side - Content -->
-        <div class="about-right">
-            <p class="about-body">Micro-tasks reduce overwhelm.</p>
-            <p class="about-description">The app breaks complex processes into simple steps, with clear progress indicators and visual guidance at each stage.</p>
+        <div class="solution-right">
+            <p class="solution-body">Micro-tasks reduce overwhelm.</p>
+            <p class="solution-description">The app breaks complex processes into simple steps, with clear progress indicators and visual guidance at each stage.</p>
         </div>
     </div>
 
-    <!-- Image Placeholders -->
-    <div class="about-images">
-        <button class="image-row-single" tabindex="0" aria-label="View solution screenshot 1">
-            <span class="sr-only">Solution screenshot showing micro-tasks interface</span>
-        </button>
+    <!-- Two Images in a Row -->
+    <div class="solution-images">
         <div class="image-row-double">
-            <button class="image-placeholder" tabindex="0" aria-label="View solution screenshot 2">
-                <span class="sr-only">Solution screenshot showing progress indicators</span>
-            </button>
-            <button class="image-placeholder" tabindex="0" aria-label="View solution screenshot 3">
-                <span class="sr-only">Solution screenshot showing visual guidance</span>
-            </button>
+            <img src="./media/documentor/App_Stacked.png" alt="Apps_Stacked" class="solution-showcase-image">
+            <img src="./media/documentor/Feature-Highlight.png" alt="Solution concept showing progress indicators" class="solution-showcase-image">
+        </div>
+    </div>
+
+    <!-- Three Videos in 2x2 Grid Layout like Parpro -->
+    <div class="solution-videos">
+        <div class="interaction-grid">
+            <div class="interaction-item">
+                <h4 class="interaction-title">Onboarding Flow</h4>
+                <div class="video-container mobile-video">
+                    <video controls>
+                        <source src="./media/videos/Documentor_Onboarding.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="interaction-item">
+                <h4 class="interaction-title">Progress Tracking</h4>
+                <div class="video-container mobile-video">
+                    <video controls>
+                        <source src="./media/videos/Documentor_Progress_Tracker.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="interaction-item">
+                <h4 class="interaction-title">Step-by-Step Guide</h4>
+                <div class="video-container mobile-video">
+                    <video controls>
+                        <source src="./media/videos/Documentor_Step_by_Step.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="interaction-item">
+                <!-- Empty fourth spot to match 2x2 grid, or add another video -->
+                <h4 class="interaction-title">Final Prototype</h4>
+                <div class="video-container mobile-video">
+                    <video controls>
+                        <source src="./media/videos/Documentor_Final_Demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -3014,26 +2408,10 @@ function copyEmail() {
         <div class="results-left">
             <h2 class="results-title">results</h2>
         </div>
-
         <!-- Right side - Content -->
         <div class="results-right">
             <p class="results-body">Validated with real users.</p>
             <p class="results-description">12 international students tested the app over 2 weeks. The results exceeded expectations. 11/12 Users satisfied.</p>
-        </div>
-    </div>
-
-    <!-- Image Placeholders -->
-    <div class="results-images">
-        <button class="image-row-single" tabindex="0" aria-label="View results screenshot 1">
-            <span class="sr-only">Results screenshot showing user testing data</span>
-        </button>
-        <div class="image-row-double">
-            <button class="image-placeholder" tabindex="0" aria-label="View results screenshot 2">
-                <span class="sr-only">Results screenshot showing satisfaction metrics</span>
-            </button>
-            <button class="image-placeholder" tabindex="0" aria-label="View results screenshot 3">
-                <span class="sr-only">Results screenshot showing user feedback</span>
-            </button>
         </div>
     </div>
 </div>
@@ -3047,7 +2425,6 @@ function copyEmail() {
         <div class="testimonial-left">
             <h2 class="testimonial-title">testimonial.</h2>
         </div>
-
         <!-- Right side - Content -->
         <div class="testimonial-right">
             <div class="testimonial-main">
@@ -3073,11 +2450,10 @@ function copyEmail() {
         </div>
 
         <div class="explore-grid">
-
-            <!-- Project 2 - Parpro -->
-            <a href="./parpro_consulting.html" class="project-card">
-                <div class="project-image">
-                    <div class="project-visual">
+            <!-- Project 1 - Parpro -->
+            <a href="./parpro_consulting.html" class="explore-card">
+                <div class="explore-image">
+                    <div class="explore-visual">
                         <div class="doc-icon">💼</div>
                         <div class="visual-elements">
                             <div class="blue-dot-small"></div>
@@ -3085,10 +2461,10 @@ function copyEmail() {
                         </div>
                     </div>
                 </div>
-                <div class="project-info">
-                    <h3 class="project-name">Parpro Consulting</h3>
-                    <p class="project-description">Website Redesign</p>
-                    <div class="project-tags">
+                <div class="explore-info">
+                    <h3 class="explore-name">Parpro Consulting</h3>
+                    <p class="explore-description">Website Redesign</p>
+                    <div class="explore-tags">
                         <span class="tag">Website</span>
                         <span class="tag">Interaction Design</span>
                     </div>
@@ -3096,9 +2472,9 @@ function copyEmail() {
             </a>
 
             <!-- Project 2 - Trucking Academy -->
-            <a href="./trucking_academy.html" class="project-card">
-                <div class="project-image">
-                    <div class="project-visual">
+            <a href="./trucking_academy.html" class="explore-card">
+                <div class="explore-image">
+                    <div class="explore-visual">
                         <div class="doc-icon">🚛</div>
                         <div class="visual-elements">
                             <div class="blue-dot-small"></div>
@@ -3106,16 +2482,15 @@ function copyEmail() {
                         </div>
                     </div>
                 </div>
-                <div class="project-info">
-                    <h3 class="project-name">Trucking Academy</h3>
-                    <p class="project-description">Ux Case Study</p>
-                    <div class="project-tags">
+                <div class="explore-info">
+                    <h3 class="explore-name">Trucking Academy</h3>
+                    <p class="explore-description">Ux Case Study</p>
+                    <div class="explore-tags">
                         <span class="tag">Mobile App</span>
                         <span class="tag">UX Designer</span>
                     </div>
                 </div>
             </a>
-
         </div>
     </div>
 </section>
@@ -3132,7 +2507,6 @@ function copyEmail() {
                 <h2 class="contact-heading">Designing is collaborative — let's start with a chat.</h2>
                 
                 <div class="contact-actions">
-                    <!-- <button class="get-in-touch-btn">Get In Touch</button>  -->
                     <div class="availability">
                         <div class="availability-dot"></div>
                         <span class="availability-text">Available For Work</span>
@@ -3156,6 +2530,6 @@ function copyEmail() {
             </div>
         </div>
     </div>
-    </section>
+</section>
 </body>
 </html>
