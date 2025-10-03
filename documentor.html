@@ -2442,6 +2442,110 @@ body {
     }
 }
 
+/* Reflection Section - Enhanced styling */
+.reflection-section {
+    padding: clamp(100px, 15vh, 140px) 0;
+    background: #ffffff;
+}
+
+.reflection-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: clamp(80px, 12vh, 120px);
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.reflection-left {
+    flex-shrink: 0;
+    min-width: 200px;
+}
+
+.reflection-title {
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.reflection-right {
+    flex: 1;
+    max-width: 55%;
+    padding-top: clamp(50px, 8vh, 80px);
+}
+
+.reflection-body {
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin: 0 0 clamp(24px, 3vh, 32px) 0;
+}
+
+.reflection-description {
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .reflection-section {
+        padding: clamp(80px, 12vh, 100px) 0;
+    }
+
+    .reflection-content {
+        flex-direction: column;
+        gap: clamp(32px, 5vh, 40px);
+        margin-bottom: clamp(60px, 10vh, 80px);
+    }
+
+    .reflection-left {
+        align-self: flex-start;
+        min-width: unset;
+    }
+
+    .reflection-right {
+        max-width: 100%;
+        padding-top: 0;
+    }
+
+    .reflection-body {
+        font-size: clamp(28px, 7vw, 36px);
+        margin-bottom: clamp(20px, 3vh, 24px);
+        line-height: 1.2;
+    }
+
+    .reflection-description {
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+.image-level-title {
+    font-size: 20px; 
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #111; /* darker for punch */
+    text-transform: uppercase; /* optional, gives case study vibes */
+    letter-spacing: 0.5px;
+}
+
+.image-level-description {
+    font-size: 14px; 
+    color: #666; 
+    margin-bottom: 18px;
+    max-width: 650px; /* line length control */
+    line-height: 1.5;
+}
+
+.image-level {
+    margin-bottom: 70px; /* more breathing space before next section */
+}
+
+
 </style>
 
 <script>
@@ -2650,6 +2754,14 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="meta-label">PLATFORM:</span>
         <span class="meta-value">MOBILE APP</span>
     </div>
+    <div class="meta-item">
+    <span class="meta-label">TEAM:</span>
+    <span class="meta-value">
+        Kate Luonge <span style="font-weight:400;">(UI Designer)</span><br>
+        Mariyam <span style="font-weight:400;">(UX Researcher)</span>
+    </span>
+    </div>
+
 </div>
 
 <!-- Visual elements -->
@@ -2664,6 +2776,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+
+
 <!-- Title -->
 <div class="hero-title">
     <h1 class="title-text">Documentor</h1>
@@ -2671,6 +2785,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="https://www.figma.com/proto/mUhrFesf5iW9kV4fvQCjx3/P4-DocuMentor?page-id=1%3A428&node-id=393-9613&viewport=1242%2C-665%2C0.24&t=jWUbub7o20cZ5ydT-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=393%3A9613&show-proto-sidebar=1" class="see-live-link" target="_blank" rel="noopener noreferrer">See It Live</a>
 </div>
 </section>
+
+
 
 <!-- About Section -->
 <section class="about-section">
@@ -2704,7 +2820,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Right side - Content -->
         <div class="challenges-right">
             <p class="challenges-body">Cognitive overload prevents progress.</p>
-            <p class="challenges-description">Government websites overwhelm users with dense information blocks, causing stress and errors.</p>
+            <p class="challenges-description">
+                As an international student myself, I experienced how <b>dense government websites</b> turned simple tasks into stressful, error-prone processes. 
+                This first-hand frustration shaped the way I defined our design challenge: 
+                reducing <b>cognitive overload</b> and helping students feel more confident as they navigate important steps.
+            </p>
         </div>
     </div>
 
@@ -2742,7 +2862,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </section>
 
-<!-- Design Process Section -->
+/* <!-- Design Process Section -->
 <section class="design-process-section">
 <div class="container">
     <div class="design-process-content">
@@ -2753,33 +2873,71 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Right side - Content -->
         <div class="design-process-right">
             <p class="design-process-body">From sketches to solutions.</p>
-            <p class="design-process-description">Rapid exploration through sketching led to two core concepts: breaking tasks into micro-steps and visual progress tracking.</p>
+            <p class="design-process-description">
+                I came up with the idea of using <b>rapid sketching and iteration</b> to explore solutions and set the direction for what we should build. 
+                Through this process, I finalized the design around two core concepts: <b>breaking tasks into micro-steps</b> and <b>visual progress tracking</b>. 
+                Kate supported by refining the <b>UI details</b>, ensuring the final design was both functional and visually polished.
+            </p>
         </div>
     </div>
-    <!-- Three Rows of Two Images Each -->
-    <div class="design-process-images">
-        <div class="image-row-double">
-            <img src="./media/documentor/sketch_1.png" alt="Initial_sketches 1" class="process-image">
-            <img src="./media/documentor/sketch_2.png" alt="Initial_sketches 2" class="process-image">
-        </div>
+    
+<!-- Design Process Images with Levels -->
+<div class="design-process-images">
 
-        <div class="mobile-ui-row">
-            <img src="./media/documentor/1.png" alt="Wireframes 1" class="mobile-ui-image">
-            <img src="./media/documentor/3.png" alt="Wireframes 2" class="mobile-ui-image">
-        </div>
-        <div class="mobile-ui-row">
-            <img src="./media/documentor/4.png" alt="Final concepts 1" class="mobile-ui-image">
-            <img src="./media/documentor/5.png" alt="Final concepts 2" class="mobile-ui-image">
-        </div>
-
-        <div class="mobile-ui-row">
-            <img src="./media/documentor/6.png" alt="Wireframes 1" class="mobile-ui-image">
-            <img src="./media/documentor/7.png" alt="Wireframes 2" class="mobile-ui-image">
-        </div>
-        
+  <!-- Level 1: Initial Sketches -->
+  <div class="image-level">
+    <h3 class="image-level-title">Initial Sketches</h3>
+    <p class="image-level-description">
+      I created the first round of rapid sketches to explore directions and set the foundation for the design.
+    </p>
+    <div class="image-row-double">
+      <img src="./media/documentor/sketch_1.png" alt="Initial sketches 1" class="process-image">
+      <img src="./media/documentor/sketch_2.png" alt="Initial sketches 2" class="process-image">
     </div>
+  </div>
+
+    <!-- Level 2: Wireframes -->
+    <div class="image-level">
+        <h3 class="image-level-title">Wireframes</h3>
+        <p class="image-level-description">
+        As the design evolved, I translated sketches into wireframes. Here I defined structure and interaction flow.
+        </p>
+        <div class="mobile-ui-row">
+        <img src="./media/documentor/1.png" alt="Wireframe 1" class="mobile-ui-image">
+        <img src="./media/documentor/3.png" alt="Wireframe 2" class="mobile-ui-image">
+        </div>
+    </div>
+
+    <!-- Level 3: Concept Development -->
+    <div class="image-level">
+        <h3 class="image-level-title">Concept Development</h3>
+        <p class="image-level-description">
+        At this stage, we worked as a team to refine ideas. Kate took the lead on <b>UI design and visual refinement</b>, 
+        while I focused on maintaining clarity in the UX flow.
+        </p>
+        <div class="mobile-ui-row">
+        <img src="./media/documentor/4.png" alt="Concept 1" class="mobile-ui-image">
+        <img src="./media/documentor/5.png" alt="Concept 2" class="mobile-ui-image">
+        </div>
+    </div>
+
+    <!-- Level 4: Final UI -->
+    <div class="image-level">
+        <h3 class="image-level-title">Final UI</h3>
+        <p class="image-level-description">
+        The final screens combined my focus on <b>micro-step UX structure</b> with Kate’s refined UI details, 
+        resulting in a balanced, functional design.
+        </p>
+        <div class="mobile-ui-row">
+        <img src="./media/documentor/6.png" alt="Final UI 1" class="mobile-ui-image">
+        <img src="./media/documentor/7.png" alt="Final UI 2" class="mobile-ui-image">
+        </div>
+    </div>
+
+    </div>
+
 </div>
-</section>
+</section> */
 
 <!-- Solution Section -->
 <section class="solution-section">
@@ -2888,6 +3046,36 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 </section>
+
+<!-- Reflection Section -->
+<section class="reflection-section">
+  <div class="container">
+    <div class="reflection-content">
+      
+      <!-- Left side - Reflection title -->
+      <div class="reflection-left">
+        <h2 class="reflection-title">reflection.</h2>
+      </div>
+      
+      <!-- Right side - Content -->
+      <div class="reflection-right">
+        <p class="reflection-body">Growing as a designer.</p>
+        <p class="reflection-description">
+        This project taught me <b>the value of walking in the footsteps of others</b>. 
+        By <b>putting myself in the shoes of international students</b>, I learned how to see problems from their perspective 
+        and <b>translate real-world struggles into digital solutions</b>. 
+        Leading the team with a <b>strategic approach</b> gave me confidence in balancing vision with execution, 
+        and it strengthened my ability to guide a project toward a <b>clear goal</b>. 
+        More than anything, I grew as a designer who creates not just for usability, but for <b>empathy</b> and <b>impact</b>.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <!-- More to Explore Section -->
 <section class="more-explore-section">
